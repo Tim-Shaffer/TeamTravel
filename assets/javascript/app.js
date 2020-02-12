@@ -65,7 +65,7 @@ $('input:radio').on('click', function() {
     loadTeamSelectList(league);
 
     // **** testing API call 
-    // getSchedule(league);
+    getSchedule(league);
 
 });
 // --------------------------------------------------------------------------------------
@@ -136,20 +136,34 @@ $("#dropdown-list").click(function () {
 // --------------------------------------------------------------------------------------
 function getSchedule(league) {
     // set the API key for the app
-    var apiKey = "MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOkswdGxpbjI0JA=="
+    var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
     // establish the query 
     var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nhl/" + league + "/full_game_schedule.json";
 
     // call the API with the query setup and the 'GET' method (from Class Activities 13-ButtonTriggeredAJAX)
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        Authorization: "Basic " + apiKey
-        // Access-Control-Allow-Origin: *,
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET",
+    //     Authorization: apiKey
+    // }).then(function(response) {
+    //     console.log(response);
+    // });
+    $.ajax ({
+        type: "GET",
+        url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/upcoming/full_game_schedule.json",
+        dataType: 'json',
+        async: false,
+        headers: {
+            "Authorization": apiKey
+        },
+        data: '{ "comment" }',
+        success: function () {
+            alert('Thanks for your comment!'); 
+        }
     }).then(function(response) {
         console.log(response);
-    });
+    });;
 
 };
 
