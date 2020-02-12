@@ -37,16 +37,57 @@
 </head>
 
 <body>
-    <form>
+    <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+        <div class="container-fluid">
+    
+    
+    
+            <div class="mr-auto order-0" class="d-flex align-items-stretch">
 
-        <label for="Name">Name:</label> 
-        <input id="name" type="text" class="form-control" name="fullname">
-        <!-- <input id="submitButton" type="submit" value="Submit"> -->
-        <button type="submit" class="btn btn-primary" id="sub-button">Submit</button>
+                <form>
+                
+                    <label for="Name" style="color:white">Name:</label>
+                    <input id="name" type="text" class="form-control" name="fullname">
+                    <!-- <input id="submitButton" type="submit" value="Submit"> -->
+                    <br>
+                    <button type="submit" class="btn btn-primary" id="sub-button">Submit</button>
+                    <br>
+                
 
 
 
-    </form>
+                
+                
+                </form>
+    
+                
+    
+    
+                <!--             
+                <li class="nameswitch" style="color:white; background-color:#007A33; line-height: 58px;" class="nav-item active"><a class="name" href="#name">Matthew</a><a class="lastname" href="#name">Krebs</a></li>
+             -->
+    
+    
+    
+            </div>
+            <a class="navbar-brand text-center" href="#"></a>
+            <button class="navbar-toggler d-block d-sm-none" type="button btn-danger" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Travel With Your Team</h1>
+           
+
 
     <div class="radio">
         <label><input id="nfl" type="radio" name="optradio" value="nfl" unchecked>NFL</label>
@@ -62,16 +103,22 @@
     </div>
 
 
-
-    <!--  -->
     <div class="dropdown" id="#team-dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select a Team
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Select a Team
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
-          
+    
         </div>
-      </div>
+
+        </div>
+       
+    </div>
+
+
+  </div>
+
 
     <!-- Insert External Scripting -->
     <script src="assets/javascript/app.js"></script>
