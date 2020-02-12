@@ -26,7 +26,7 @@ let nhlArray = ["Anaheim Ducks", "Boston Bruins", "Buffalo Sabres", "Calgary Fla
 
 // --------------------------------------------------------------------------------------
 // event listener for submit button to get user name.
-$('#submitButton').on('click', function(event) {
+$('#sub-button').on('click', function(event) {
 
     // prevent the form from submitting itself.
     event.preventDefault();
@@ -37,7 +37,39 @@ $('#submitButton').on('click', function(event) {
     
     // add the user to local storage.
     localStorage.setItem("username", userName);
+
+    // **** change submit button id
+    // **** Add to remove entry after the button clicked 
+    $("#name").val('');
 });
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// event listener that gets triggerred on click of a radio button
+// 
+//  1 - takes the name from the radio button to store as the league used in the API call
+//      to get the schedule for the particular league.
+//  2 - the league will also be used to build the list of teams possible to select
+// --------------------------------------------------------------------------------------
+$('input:radio').on('click', function() {
+    
+    // gather the name of the league from the value attribute of the button
+    var league = this.value;  // need to make sure that there is a value attribute on the radio buttons ****
+    console.log(league); 
+
+    // add the league to local storage
+    localStorage.setItem("league", league);
+
+    // **** needed the value attributes added to the html
+    // **** added function call
+    loadTeamSelectList(league);
+
+    // **** testing API call 
+    // getSchedule(league);
+
+});
+// --------------------------------------------------------------------------------------
+// end of event listener that gets triggerred on click of a radio button
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
@@ -47,8 +79,12 @@ $('#submitButton').on('click', function(event) {
 // --------------------------------------------------------------------------------------
 function loadTeamSelectList(league) {
 
+    league = league.toUpperCase();
+
     // verify the passed in league is valid
     if (league === "MLB" || league === "NBA" || league === "NFL" || league === "NHL") {
+
+        $("#dropdown-list").empty();
 
         let array = [];
         // set the array for the appropriate league
@@ -68,7 +104,7 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
-            $("#dropdown").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
+            $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
         };  
         
         return true;
@@ -79,7 +115,43 @@ function loadTeamSelectList(league) {
 
     }
 
-}
+};
 // --------------------------------------------------------------------------------------
 // end of loadTeamSelectList() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// event listener that gets triggerred on click of a radio button
+// --------------------------------------------------------------------------------------
+$("#dropdown-list").click(function () {
+    var selectedText = $("#dropdown-list").find("option:selected").text();
+    var selectedValue = $("#dropdown-list").val();
+    console.log("Selected Text: " + selectedText + " Value: " + selectedValue);
+});
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+//   Ajax call to API - MySportsFeeds.com
+// --------------------------------------------------------------------------------------
+function getSchedule(league) {
+    // set the API key for the app
+    var apiKey = "MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOkswdGxpbjI0JA=="
+
+    // establish the query 
+    var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nhl/" + league + "/full_game_schedule.json";
+
+    // call the API with the query setup and the 'GET' method (from Class Activities 13-ButtonTriggeredAJAX)
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        Authorization: "Basic " + apiKey
+        // Access-Control-Allow-Origin: *,
+    }).then(function(response) {
+        console.log(response);
+    });
+
+};
+
+// --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
