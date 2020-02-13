@@ -65,10 +65,6 @@ $('input:radio').on('click', function() {
     // **** added function call
     loadTeamSelectList(league);
 
-    
-    // **** for testing - call the API on select of the radio button until we get the dropdown select to work.
-    getSchedule(league.toUpperCase());
-
 });
 // --------------------------------------------------------------------------------------
 // end of event listener that gets triggerred on click of a radio button
@@ -127,16 +123,27 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 $("#dropdown-list").on("click",function(){
     console.log("Event Trigerred");
-    var selectedValue = $("option").val();
-    console.log("Selected Value: " + selectedValue);
+    var teamName = $("option").val();
+    console.log("Selected Value: " + teamName);
+
+    // get the league back from local storage **** may look to change to session storage instead
+    var league = localStorage.getItem("league");
+
+    // call the API 
+    getSchedule(league.toUpperCase(), teamName);
+
 });
 // --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
 //   Ajax call to API - MySportsFeeds.com
+//  Parameter values:
+//  league - the value provided from the user selection of the radio-button (MLB, NBA, NFL, NHL)
+//  teamName - the value from the user selection of the dropdown list
 // --------------------------------------------------------------------------------------
-function getSchedule(league) {
+function getSchedule(league, teamName) {
+    console.log("Ready to make the API call to get the selected schedule");
     // set the API key for the app
     var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
