@@ -1,3 +1,9 @@
+//Show modal when the page is ready. 
+
+$(document).ready(function () {
+    $("#selectLeagureAndTeam").modal("show");
+}); 
+
 
 
 // Global variables for league arrays of teams
@@ -70,6 +76,19 @@ $('input:radio').on('click', function() {
     // getSchedule(league);
 
 });
+
+$("#dropdown-list").on('click', function () {
+
+    var team=this.value;
+
+    console.log(team);;
+
+
+
+
+});
+
+
 // --------------------------------------------------------------------------------------
 // end of event listener that gets triggerred on click of a radio button
 // --------------------------------------------------------------------------------------
@@ -106,14 +125,24 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
+
+            //radio buttons so the teams could be selected
+
+            // $("#dropdown-list").append('<label><input type="radio" class="teamsInDropdown" name="teamSelection" value='+ array[i]+' unchecked="">'+ array[i]+'</label>');
+
+            // could not select
+            
             $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
+
         };  
         
         return true;
+      
 
     } else {
 
         return false;
+       
 
     }
 
@@ -154,6 +183,7 @@ function getSchedule(league) {
     });
 
 };
+
 
 
 
