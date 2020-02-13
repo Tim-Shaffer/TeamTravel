@@ -169,7 +169,6 @@ function getSchedule(league, teamName) {
         getNHLSchedule(apiKey);
     };
 
-
     // $.ajax ({
     //     url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
     //     // url: queryURL,
@@ -240,11 +239,27 @@ function getNFLSchedule(apiKey) {
         headers: {
             "Authorization": apiKey
         },
+
+// --------------------------------------------------------------------------------------
+function getSchedule(league) {
+    // set the API key for the app
+    var apiKey = "MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOkswdGxpbjI0JA=="
+
+    // establish the query 
+    var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nhl/" + league + "/full_game_schedule.json";
+
+    // call the API with the query setup and the 'GET' method (from Class Activities 13-ButtonTriggeredAJAX)
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        Authorization: "Basic" + apiKey,
+        // Access-Control-Allow-Origin: *,
     }).then(function(response) {
         console.log(response);
     });
 
 };
+
 // --------------------------------------------------------------------------------------
 // end of getNFLSchedule() function
 // --------------------------------------------------------------------------------------
@@ -269,4 +284,3 @@ function getNHLSchedule(apiKey) {
 };
 // --------------------------------------------------------------------------------------
 // end of getNHLSchedule() function
-// --------------------------------------------------------------------------------------
