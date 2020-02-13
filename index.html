@@ -81,6 +81,23 @@
 </div>
 
 <div class="col-5">
+    
+    <!-- New HTML for dropdown -->
+    
+    <div class="dropdown" id="team-dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Select a Team
+        </button>
+        <div class="dropdown-menu  scrollable-menu team-selection" role="menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
+    
+        </div>
+    </div>
+
+
+<!-- Old html for dropdown -->
+
+<!-- 
     <div class="dropdown" id="#team-dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -90,7 +107,11 @@
         <div class="dropdown-menu scrollable-menu team-selection" role="menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
     
         </div>
-        </div>
+        </div> -->
+
+
+
+
        </div>
        </div>
 <div class="row">
@@ -128,12 +149,13 @@
 <!-- Beginning of Content that is not in the Modal -->
 
 <header>
-    <a href="#" id="logo">Travel With Your Team!</a>
+    <section id="logo">Travel With The <span id="teamNameEntry">Team</span></section>
 </header>
 
 <section id="hero1" class="hero">
     <div class="inner">
         <div class="copy">
+            
             <h1>Connecting to the World of Sports</h1>
             <p>See below for upcoming games!</p>
 
