@@ -1,13 +1,4 @@
-//Show modal when the page is ready. 
-
-$(document).ready(function () {
-    $("#selectLeagureAndTeam").modal("show");
-}); 
-
-
-
 // Global variables for league arrays of teams
-
 // alphabetical array of MLB Teams
 let mlbArray = ["Arizona Diamondbacks", "Atlanta Braves", "Baltimore Orioles", "Boston Red Sox", "Chicago Cubs", "Chicago White Sox", "Cincinnati Reds", "Cleveland Indians",
 "Colorado Rockies", "Detroit Tigers", "Houston Astros", "Kansas City Royals", "Los Angeles Angels", "Los Angeles Dodgers", "Miami Marlins", "Milwaukee Brewers", "Minnesota Twins",
@@ -16,9 +7,9 @@ let mlbArray = ["Arizona Diamondbacks", "Atlanta Braves", "Baltimore Orioles", "
 
 // alphabetical array of NBA Teams
 let nbaArray = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons",
-"Golden State Warriors", "Houston Rockets", "Indiana Pacers", "LA Clippers", "LA Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans",
-"New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia Sixers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors",
-"Utah Jazz", "Washington Wizards"];
+"Golden State Warriors", "Houston Rockets", "Indiana Pacers", "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", 
+"New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", 
+"Toronto Raptors", "Utah Jazz", "Washington Wizards"];
 
 // alphabetical array of NFL Teams
 let nflArray = ["Atlanta Falcons", "Arizona Cardinals", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys",
@@ -27,12 +18,10 @@ let nflArray = ["Atlanta Falcons", "Arizona Cardinals", "Baltimore Ravens", "Buf
 "Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Redskins"];
 
 // alphabetical array of NHL Teams
-let nhlArray = ["Anaheim Ducks", "Boston Bruins", "Buffalo Sabres", "Calgary Flames", "Carolina Hurricanes", "Chicago Blackhawks", "Colorado Avalanche", "Columbus Blue Jackets", "Dallas Stars",
-"Detroit Red Wings", "Edmonton Oilers", "Florida Panthers", "Las Vegas Golden Knights", "Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", 
-"New York Islanders", "New York Rangers", "Ottawa Senators", "Philadelphia Flyers", "Phoenix Coyotes", "Pittsburgh Penguins", "San Jose Sharks", "St. Louis Blues", "Tampa Bay Lightning", 
-"Toronto Maple Leafs", "Vancouver Canucks", "Washington Capitals", "Winnipeg Jets"];
-
-var teamName="";
+let nhlArray = ["Anaheim Ducks", "Arizona Coyotes", "Boston Bruins", "Buffalo Sabres", "Calgary Flames", "Carolina Hurricanes", "Chicago Blackhawks", "Colorado Avalanche", "Columbus Blue Jackets", 
+"Dallas Stars", "Detroit Red Wings", "Edmonton Oilers", "Florida Panthers",  "Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", 
+"New York Islanders", "New York Rangers", "Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks", "St. Louis Blues", "Tampa Bay Lightning", 
+"Toronto Maple Leafs", "Vancouver Canucks", "Vegas Golden Knights", "Washington Capitals", "Winnipeg Jets"];
 
 // --------------------------------------------------------------------------------------
 // event listener for submit button to get user name.
@@ -51,6 +40,7 @@ $('#sub-button').on('click', function(event) {
     // **** change submit button id
     // **** Add to remove entry after the button clicked 
     $("#name").val('');
+
 });
 // --------------------------------------------------------------------------------------
 
@@ -74,23 +64,7 @@ $('input:radio').on('click', function() {
     // **** added function call
     loadTeamSelectList(league);
 
-    // **** testing API call 
-    // getSchedule(league);
-
 });
-
-$("#dropdown-list").on('click', function () {
-
-    var team=this.value;
-
-    console.log(team);;
-
-
-
-
-});
-
-
 // --------------------------------------------------------------------------------------
 // end of event listener that gets triggerred on click of a radio button
 // --------------------------------------------------------------------------------------
@@ -127,24 +101,14 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
-
-            //radio buttons so the teams could be selected
-
-            $("#dropdown-list").append('<label><input type="radio" class="teamsInDropdown" name="teamSelection" id='+ league+array[i]+' unchecked="">'+ array[i]+'</label>');
-
-            // could not select
-            
-            // $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
-
+            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
         };  
         
         return true;
-      
 
     } else {
 
         return false;
-       
 
     }
 
@@ -154,61 +118,165 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
-// event listener that gets triggerred on click of a radio button
+// event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
-$("#dropdown-list").click(function () {
-    var selectedText = $("#dropdown-list").find("option:selected").text();
-    var selectedValue = $("#dropdown-list").val();
-    console.log("Selected Text: " + selectedText + " Value: " + selectedValue);
+// $(".dropdown-item:button").on("click",function(){
+$('body').on('click', ".dropdown-item:button", function () {
+    console.log("Event Trigerred");
+    var tag = $(this);
+    var teamName = tag.val();
+    console.log("Selected Value: " + teamName);
+
+    // get the league back from local storage **** may look to change to session storage instead
+    var league = localStorage.getItem("league");
+
+    // call the API 
+    getSchedule(league.toUpperCase(), teamName);
+
 });
 // --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
 //   Ajax call to API - MySportsFeeds.com
+//  Parameter values:
+//  league - the value provided from the user selection of the radio-button (MLB, NBA, NFL, NHL)
+//  teamName - the value from the user selection of the dropdown list
 // --------------------------------------------------------------------------------------
-function getSchedule(league) {
+function getSchedule(league, teamName) {
+    console.log("Ready to make the API call to get the selected schedule");
     // set the API key for the app
-    var apiKey = "MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOkswdGxpbjI0JA=="
+    var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
-    // establish the query 
-    var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nhl/" + league + "/full_game_schedule.json";
+    // make the API call for each league
+    if (league === "MLB" ) {
+        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies";
+        
+        getMLBSchedule(apiKey);
 
-    // call the API with the query setup and the 'GET' method (from Class Activities 13-ButtonTriggeredAJAX)
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        Authorization: "Basic" + apiKey,
-        // Access-Control-Allow-Origin: *,
+    } else if (league === "NBA") {
+        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-76ers";
+
+        getNBASchedule(apiKey);
+
+    } else if (league === "NFL") {
+        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
+        
+        // getNFLSchedule(apiKey);
+
+    } else if (league === "NHL") {
+        // var queryURL = '"https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers"';
+        
+        getNHLSchedule(apiKey);
+    };
+
+    // $.ajax ({
+    //     url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
+    //     // url: queryURL,
+    //     headers: {
+    //         "Authorization": apiKey
+    //     },
+    // }).then(function(response) {
+    //     console.log(response);
+    // });
+
+};
+// --------------------------------------------------------------------------------------
+//  end of getSchedule() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+//  function to return the MLB Schedule
+//  Parameter values:
+//  apiKey - the Base64 encoded Authorization key for this feed 
+// --------------------------------------------------------------------------------------
+function getMLBSchedule(apiKey){ 
+
+    $.ajax ({
+        url: "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies",
+        // url: queryURL,
+        headers: {
+            "Authorization": apiKey
+        },
     }).then(function(response) {
         console.log(response);
     });
 
 };
-
-
 // --------------------------------------------------------------------------------------
-// event listener that gets triggerred on click of the team name
-// --------------------------------------------------------------------------------------
-$("#dropdown-list").on("click", function () {
-    console.log("Event Trigerred");
-    var teamName = $("option").val();
-    console.log("Selected Value: " + teamName);
-    // get the league back from local storage **** may look to change to session storage instead
-    var league = localStorage.getItem("league");
-    // call the API 
-    getSchedule(league.toUpperCase(), teamName);
-
-
-    console.log(teamName);
-
-});
-
-
-// --------------------------------------------------------------------------------------
+// end of getMLBSchedule() function
 // --------------------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+//  function to return the NBA Schedule
+//  Parameter values:
+//  apiKey - the Base64 encoded Authorization key for this feed 
+// --------------------------------------------------------------------------------------
+function getNBASchedule(apiKey) {
 
+    $.ajax ({
+        url: "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-76ers",
+        headers: {
+            "Authorization": apiKey
+        },
+    }).then(function(response) {
+        console.log(response);
+    });
+
+};
+// --------------------------------------------------------------------------------------
+// end of getNBASchedule() function
+// --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
+//  function to return the NFL Schedule  **** Currently not Working ****
+//  Parameter values:
+//  apiKey - the Base64 encoded Authorization key for this feed 
+// --------------------------------------------------------------------------------------
+function getNFLSchedule(apiKey) {
+
+    $.ajax ({
+        url: "https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json?type=GET&datatype=json&async=false",
+        headers: {
+            "Authorization": apiKey
+        },
+    }).then(function(response) {
+        console.log(response);
+    });
+
+};
+// --------------------------------------------------------------------------------------
+// end of getNFLSchedule() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+//  function to return the NHL Schedule
+//  Parameter values:
+//  apiKey - the Base64 encoded Authorization key for this feed 
+// --------------------------------------------------------------------------------------
+function getNHLSchedule(apiKey) {
+
+    $.ajax ({
+            url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
+            // url: queryURL,
+            headers: {
+                "Authorization": apiKey
+            },
+        }).then(function(response) {
+            console.log(response);
+        });
+
+};
+// --------------------------------------------------------------------------------------
+// end of getNHLSchedule() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// Show modal when the page is ready. 
+// --------------------------------------------------------------------------------------
+$(document).ready(function () {
+    $("#selectLeagureAndTeam").modal("show");
+}); 
+// --------------------------------------------------------------------------------------
+//  end of document ready action
 // --------------------------------------------------------------------------------------
