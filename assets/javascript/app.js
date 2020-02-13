@@ -1,3 +1,11 @@
+//Show modal when the page is ready. 
+
+$(document).ready(function () {
+    $("#selectLeagureAndTeam").modal("show");
+}); 
+
+
+
 // Global variables for league arrays of teams
 
 // alphabetical array of MLB Teams
@@ -65,9 +73,22 @@ $('input:radio').on('click', function() {
     loadTeamSelectList(league);
 
     // **** testing API call 
-    getSchedule(league);
+    // getSchedule(league);
 
 });
+
+$("#dropdown-list").on('click', function () {
+
+    var team=this.value;
+
+    console.log(team);;
+
+
+
+
+});
+
+
 // --------------------------------------------------------------------------------------
 // end of event listener that gets triggerred on click of a radio button
 // --------------------------------------------------------------------------------------
@@ -104,14 +125,24 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
+
+            //radio buttons so the teams could be selected
+
+            // $("#dropdown-list").append('<label><input type="radio" class="teamsInDropdown" name="teamSelection" value='+ array[i]+' unchecked="">'+ array[i]+'</label>');
+
+            // could not select
+            
             $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
+
         };  
         
         return true;
+      
 
     } else {
 
         return false;
+       
 
     }
 
@@ -136,36 +167,25 @@ $("#dropdown-list").click(function () {
 // --------------------------------------------------------------------------------------
 function getSchedule(league) {
     // set the API key for the app
-    var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
+    var apiKey = "MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOkswdGxpbjI0JA=="
 
     // establish the query 
     var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nhl/" + league + "/full_game_schedule.json";
 
     // call the API with the query setup and the 'GET' method (from Class Activities 13-ButtonTriggeredAJAX)
-    // $.ajax({
-    //     url: queryURL,
-    //     method: "GET",
-    //     Authorization: apiKey
-    // }).then(function(response) {
-    //     console.log(response);
-    // });
-    $.ajax ({
-        type: "GET",
-        url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/upcoming/full_game_schedule.json",
-        dataType: 'json',
-        async: false,
-        headers: {
-            "Authorization": apiKey
-        },
-        data: '{ "comment" }',
-        success: function () {
-            alert('Thanks for your comment!'); 
-        }
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        Authorization: "Basic" + apiKey,
+        // Access-Control-Allow-Origin: *,
     }).then(function(response) {
         console.log(response);
-    });;
+    });
 
 };
+
+
+
 
 // --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
