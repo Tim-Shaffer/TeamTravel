@@ -125,10 +125,10 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of a radio button
 // --------------------------------------------------------------------------------------
-$("#dropdown-list").click(function () {
-    var selectedText = $("#dropdown-list").find("option:selected").text();
-    var selectedValue = $("#dropdown-list").val();
-    console.log("Selected Text: " + selectedText + " Value: " + selectedValue);
+$("#dropdown-list").on("click",function(){
+    console.log("Event Trigerred");
+    var selectedValue = $("option").val();
+    console.log("Selected Value: " + selectedValue);
 });
 // --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ function getSchedule(league) {
     } else if (league === "NFL") {
         // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
         
-        getNFLSchedule(apiKey);
+        // getNFLSchedule(apiKey);
 
     } else if (league === "NHL") {
         // var queryURL = '"https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers"';
