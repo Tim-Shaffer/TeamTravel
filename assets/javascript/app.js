@@ -226,3 +226,45 @@ function getNBASchedule(apiKey) {
 // end of getNBASchedule() function
 // --------------------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+//  function to return the NFL Schedule  **** Currently not Working ****
+//  Parameter values:
+//  apiKey - the Base64 encoded Authorization key for this feed 
+// --------------------------------------------------------------------------------------
+function getNFLSchedule(apiKey) {
+
+    $.ajax ({
+        url: "https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json?type=GET&datatype=json&async=false",
+        headers: {
+            "Authorization": apiKey
+        },
+    }).then(function(response) {
+        console.log(response);
+    });
+
+};
+// --------------------------------------------------------------------------------------
+// end of getNFLSchedule() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+//  function to return the NHL Schedule
+//  Parameter values:
+//  apiKey - the Base64 encoded Authorization key for this feed 
+// --------------------------------------------------------------------------------------
+function getNHLSchedule(apiKey) {
+
+    $.ajax ({
+            url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
+            // url: queryURL,
+            headers: {
+                "Authorization": apiKey
+            },
+        }).then(function(response) {
+            console.log(response);
+        });
+
+};
+// --------------------------------------------------------------------------------------
+// end of getNHLSchedule() function
+// --------------------------------------------------------------------------------------
