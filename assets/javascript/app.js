@@ -1,11 +1,3 @@
-//Show modal when the page is ready. 
-
-$(document).ready(function () {
-    $("#selectLeagureAndTeam").modal("show");
-}); 
-
-
-
 // Global variables for league arrays of teams
 
 // alphabetical array of MLB Teams
@@ -72,23 +64,11 @@ $('input:radio').on('click', function() {
     // **** added function call
     loadTeamSelectList(league);
 
-    // **** testing API call 
-    // getSchedule(league);
+    
+    // **** for testing - call the API on select of the radio button until we get the dropdown select to work.
+    getSchedule();
 
 });
-
-$("#dropdown-list").on('click', function () {
-
-    var team=this.value;
-
-    console.log(team);;
-
-
-
-
-});
-
-
 // --------------------------------------------------------------------------------------
 // end of event listener that gets triggerred on click of a radio button
 // --------------------------------------------------------------------------------------
@@ -125,24 +105,14 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
-
-            //radio buttons so the teams could be selected
-
-            // $("#dropdown-list").append('<label><input type="radio" class="teamsInDropdown" name="teamSelection" value='+ array[i]+' unchecked="">'+ array[i]+'</label>');
-
-            // could not select
-            
             $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
-
         };  
         
         return true;
-      
 
     } else {
 
         return false;
-       
 
     }
 
@@ -167,25 +137,31 @@ $("#dropdown-list").click(function () {
 // --------------------------------------------------------------------------------------
 function getSchedule(league) {
     // set the API key for the app
-    var apiKey = "MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOkswdGxpbjI0JA=="
+    var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
     // establish the query 
-    var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nhl/" + league + "/full_game_schedule.json";
+    if (league === "MLB") {
+        var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?datatype=json&async=false&date=since-yesterday";
+    } else if (league === "NBA") {
+        var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?&datatype=json&async=false&date=since-yesterday";
+    } else if (league === "NFL") {
+        var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
+    } else if (league === "NHL") {
+        var queryURL = '"https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers"';
+    };
 
-    // call the API with the query setup and the 'GET' method (from Class Activities 13-ButtonTriggeredAJAX)
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        Authorization: "Basic" + apiKey,
-        // Access-Control-Allow-Origin: *,
+
+    $.ajax ({
+        url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
+        // url: queryURL,
+        headers: {
+            "Authorization": apiKey
+        },
     }).then(function(response) {
         console.log(response);
     });
 
 };
-
-
-
 
 // --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
