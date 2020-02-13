@@ -32,6 +32,8 @@ let nhlArray = ["Anaheim Ducks", "Boston Bruins", "Buffalo Sabres", "Calgary Fla
 "New York Islanders", "New York Rangers", "Ottawa Senators", "Philadelphia Flyers", "Phoenix Coyotes", "Pittsburgh Penguins", "San Jose Sharks", "St. Louis Blues", "Tampa Bay Lightning", 
 "Toronto Maple Leafs", "Vancouver Canucks", "Washington Capitals", "Winnipeg Jets"];
 
+var teamName="";
+
 // --------------------------------------------------------------------------------------
 // event listener for submit button to get user name.
 $('#sub-button').on('click', function(event) {
@@ -128,11 +130,11 @@ function loadTeamSelectList(league) {
 
             //radio buttons so the teams could be selected
 
-            // $("#dropdown-list").append('<label><input type="radio" class="teamsInDropdown" name="teamSelection" value='+ array[i]+' unchecked="">'+ array[i]+'</label>');
+            $("#dropdown-list").append('<label><input type="radio" class="teamsInDropdown" name="teamSelection" id='+ league+array[i]+' unchecked="">'+ array[i]+'</label>');
 
             // could not select
             
-            $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
+            // $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
 
         };  
         
@@ -184,6 +186,27 @@ function getSchedule(league) {
 
 };
 
+
+// --------------------------------------------------------------------------------------
+// event listener that gets triggerred on click of the team name
+// --------------------------------------------------------------------------------------
+$("#dropdown-list").on("click", function () {
+    console.log("Event Trigerred");
+    var teamName = $("option").val();
+    console.log("Selected Value: " + teamName);
+    // get the league back from local storage **** may look to change to session storage instead
+    var league = localStorage.getItem("league");
+    // call the API 
+    getSchedule(league.toUpperCase(), teamName);
+
+
+    console.log(teamName);
+
+});
+
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
 
 
 
