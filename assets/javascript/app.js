@@ -129,6 +129,9 @@ $('body').on('click', ".dropdown-item:button", function () {
     // get the league back from local storage **** may look to change to session storage instead
     var league = localStorage.getItem("league");
 
+    // update the Header with the team selected
+    $("#teamNameEntry").text(teamName);
+
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
 
