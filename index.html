@@ -42,7 +42,6 @@
 
 
 <!-- HTML for modal  -->
-
 <div id="selectLeagureAndTeam" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" style="height: inherit;" role="content">
         <!-- Modal content-->
@@ -54,116 +53,83 @@
             <div class="modal-body">
                 <form>
 
-
                     <div class="card-body col-12" style="background-color: #999999; position: align-self-center">
+  
+                        <div class="row">
+                            <div class="col-5">
+                                <fieldset data-role="controlgroup" data-type="horizontal">
+                                    <legend>Select A League:</legend>
+                                    <div class="radio">
+                                        <label><input id="nfl" type="radio" name="optradio" value="nfl" unchecked>NFL</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input id="nba" type="radio" name="optradio" value="nba" uncheked>NBA</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label><input id="nhl" type="radio" name="optradio" value="nhl" unchecked>NHL</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input id="mlb" type="radio" name="optradio" value="mlb" unchecked>MLB</label>
+                                    </div>
+                                </fieldset>
+                            </div>
 
-                       
-                           
+                            <div class="col-5">
+                                
+                                <!-- New HTML for dropdown -->
 
+                                <div class="dropdown id="team-dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Select a Team
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
+
+                                    </div>
+                                
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                                
+                                <div class="col-5">
+                                    <br>
+                                    <label for="Name" style="color:black">Name:</label>
+                                    <input style="width:140px; position: align-self-center;" id="name" type="text" class="form-control"
+                                        name="fullname"><br>
+                                
+                                </div>
+
+                            <div class="col-5">
+                                <br>
+                                <br>
+                                <br>
+                                <div class="d-flex justify-content-left">
+                                    <button type="submit" class="btn btn-primary" id="sub-button" data-dismiss="modal">Submit</button>
+                                
+                                
+                                </div>
+                            
+                            </div>
                         
-<div class="row">
-    <div class="col-5">
-<fieldset data-role="controlgroup" data-type="horizontal">
-    <legend>Select A League:</legend>
-    <div class="radio">
-        <label><input id="nfl" type="radio" name="optradio" value="nfl" unchecked>NFL</label>
-    </div>
-    <div class="radio">
-        <label><input id="nba" type="radio" name="optradio" value="nba" uncheked>NBA</label>
-    </div>
-    <div class="radio disabled">
-        <label><input id="nhl" type="radio" name="optradio" value="nhl" unchecked>NHL</label>
-    </div>
-    <div class="radio">
-        <label><input id="mlb" type="radio" name="optradio" value="mlb" unchecked>MLB</label>
-    </div>
-</fieldset>
-</div>
-
-<div class="col-5">
-    
-    <!-- New HTML for dropdown -->
-    
-    <!-- <div class="dropdown" id="team-dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select a Team
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
-          
-        </div>
-
-      </div> -->
-
-      <div class="dropdown id="team-dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select a Team
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
-            <!-- <button class="dropdown-item" type="button" value="Atlanta Falcons">Atlanta Falcons</button>
-            <button class="dropdown-item" type="button" value="Arizona Cardinals">Arizona Cardinals</button>
-            <button class="dropdown-item" type="button" value="Baltimore Ravens">Baltimore Ravens</button> -->
-            <!-- <button class="dropdown-item" type="button">Select All</button> -->
-            <!-- <option class="dropdown-item" value="Atlanta Falcons">Atlanta Falcons</option>
-            <option class="dropdown-item" value="Arizona Cardinals">Arizona Cardinals</option>
-            <option class="dropdown-item" value="Baltimore Ravens">Baltimore Ravens</option> -->
-        </div>
-      
-    </div>
-
-
-<!-- Old html for dropdown -->
-
-<!-- 
-    <div class="dropdown" id="#team-dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Select a Team
-        </button>
-      
-        <div class="dropdown-menu scrollable-menu team-selection" role="menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
-    
-        </div>
-        </div> -->
-
-
-
-
-       </div>
-       </div>
-<div class="row">
-        <div class="col-5">
-            <br>
-            <label for="Name" style="color:black">Name:</label>
-            <input style="width:140px; position: align-self-center;" id="name" type="text" class="form-control"
-                name="fullname"><br>
-        
-        </div>
-
-    <div class="col-5">
-        <br>
-        <br>
-        <br>
-    <div class="d-flex justify-content-left">
-        <button type="submit" class="btn btn-primary" id="sub-button" data-dismiss="modal">Submit</button>
-    
-    
-    </div>
-    </div>
-    </div>
-
-                        
-                       
+                        </div>   
                         
                     </div>
                   
                 </form>
+
             </div>
+
         </div>
+    
     </div>
+
 </div>
 <!-- End of Modal -->
-<!-- Beginning of Content that is not in the Modal -->
 
+<!-- Beginning of Content that is not in the Modal -->
 <header>
     <section id="logo">Travel With The <span id="teamNameEntry">Team</span></section>
 </header>

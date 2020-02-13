@@ -120,7 +120,6 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
-// $(".dropdown-item:button").on("click",function(){
 $('body').on('click', ".dropdown-item:button", function () {
     console.log("Event Trigerred");
     var tag = $(this);
