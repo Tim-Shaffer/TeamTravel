@@ -188,7 +188,13 @@ function getSchedule(league, teamName) {
         },
     }).then(function(response) {
         console.log(response);
+
+        // bulid schedule table based on json returned
+        buildGameSchedule(response);
+
     });
+
+    
 
 };
 // --------------------------------------------------------------------------------------
@@ -226,3 +232,35 @@ $(document).ready(function () {
 
 //  end of document ready action
 // --------------------------------------------------------------------------------------
+
+function buildGameSchedule(apiResponse) {
+
+    let games = [];
+    var newRow;
+
+    for (i=0; i < apiResponse.fullgameschedule.gameentry.length; i++) {
+        games.push(apiResponse.fullgameschedule.gameentry[i]);
+    }
+
+    // iterate over games and build a row for each game
+    for (i=0; i < games.length; i++) {
+
+        // Create the new row of games to display
+        // newRow = $("<tr>").append(
+        //         $("<td>").text("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
+        //                         + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
+        // );
+        // newRow.addClass("game-row");   --- use the game-row class to define the click event listener to trigger the other API call.
+        // newRow.attr("date", games[i].date);
+        // newRow.attr("location", games[i].homeTeam.City);
+
+        // Append the new row to the table
+        // $("#sched-table > tbody").append(newRow);
+
+        // log it for testing until there is a table to append to
+        console.log("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
+                    + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name);
+
+    }
+
+};
