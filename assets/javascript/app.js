@@ -404,6 +404,11 @@ function setBackgroundColorNHL(team) {
         if (team === nhlArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
         }
+        $("#modalHeading").attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+
+
+
+
     };
 };
 

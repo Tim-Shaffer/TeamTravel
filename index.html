@@ -44,25 +44,26 @@
     <!-- HTML for modal  -->
 
     <div id="selectLeagureAndTeam" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg" style="height: inherit;" role="content">
+        <div class="modal-dialog modal-lg" style="height: inherit; margin-top:100px;" role="content">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header" style="background: gray">
-                    <h4 class="modal-title" style="color:white">Register Here!</h4>
+                    <h4 class="modal-title" style="color:white" >Register Here!</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form>
 
 
-                        <div class="card-body col-12" style="background-color: #999999; position: align-self-center">
+                        <div class="card-body col-12" style="background-color: #999999; position: align-self-center;">
 
 
 
 
 
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-lg-4" 
+                                style="text-align: center;">
                                     <fieldset data-role="controlgroup" data-type="horizontal">
                                         <legend>Select A League:</legend>
                                         <div class="radio">
@@ -84,11 +85,12 @@
                                     </fieldset>
                                 </div>
 
-                                <div class="col-5">
+                                <div class="col-lg-4">
+                                    <div class="d-flex justify-content-center">
 
                                     <!-- New HTML for dropdown -->
 
-                                    <div class="dropdown" id="team-dropdown">
+                                    <div class="dropdown" id="team-dropdown" style="margin-bottom: 120px;left:-20px;">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
@@ -120,26 +122,30 @@
 
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-5">
-                                    <br>
-                                    <label for="Name" style="color:black">Name:</label>
-                                    <input style="width:140px; position: align-self-center;" id="name" type="text"
+                            
+                                <div class="col-lg-4">
+                                   
+                                    <div class="d-flex justify-content-center">
+                                    
+                                    <label for="Name" style="color:black; margin-top:30px;">Name:</label>
+                                    <input style="width:140px; position: align-self-center; margin-top:30px;" id="name" type="text"
                                         class="form-control" name="fullname"><br>
 
                                 </div>
-
-                                <div class="col-5">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="d-flex justify-content-left">
-                                        <button type="submit" class="btn btn-primary" id="sub-button"
-                                            data-dismiss="modal">Submit</button>
-
-
-                                    </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary" id="sub-button" data-dismiss="modal">Submit</button>
+                                
+                                
                                 </div>
+</div>
+                                </div>
+
+                                </div>
+
+                                         
                             </div>
 
 
