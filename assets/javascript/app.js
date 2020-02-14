@@ -153,37 +153,43 @@ function getSchedule(league, teamName) {
     // set the API key for the app
     var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
+    var team = teamName.replace(" ", "-").toLowerCase();
+    var limit = 10;
+    var queryURL;
+
     // make the API call for each league
     if (league === "MLB" ) {
-        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies";
+
+        queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=" + team + "&limit=" + limit;
         
-        getMLBSchedule(apiKey);
+        // getMLBSchedule(apiKey);
 
     } else if (league === "NBA") {
-        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-76ers";
+        
+        queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=" + team + "&limit=" + limit;
 
-        getNBASchedule(apiKey);
+        // getNBASchedule(apiKey);
 
     } else if (league === "NFL") {
-        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
+        // queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
         
-        // getNFLSchedule(apiKey);
+        getNFLSchedule(apiKey);
 
     } else if (league === "NHL") {
-        // var queryURL = '"https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers"';
         
-        getNHLSchedule(apiKey);
+        queryURL= "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=" + team + "&limit=" + limit;
+        
+        // getNHLSchedule(apiKey);
     };
 
-    // $.ajax ({
-    //     url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
-    //     // url: queryURL,
-    //     headers: {
-    //         "Authorization": apiKey
-    //     },
-    // }).then(function(response) {
-    //     console.log(response);
-    // });
+    $.ajax ({
+        url: queryURL,
+        headers: {
+            "Authorization": apiKey
+        },
+    }).then(function(response) {
+        console.log(response);
+    });
 
 };
 // --------------------------------------------------------------------------------------
@@ -195,82 +201,85 @@ function getSchedule(league, teamName) {
 //  Parameter values:
 //  apiKey - the Base64 encoded Authorization key for this feed 
 // --------------------------------------------------------------------------------------
-function getMLBSchedule(apiKey){ 
+// function getMLBSchedule(apiKey){ 
 
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        console.log(response);
-    });
+//     var team = "philadelphia-phillies";
 
-};
-// --------------------------------------------------------------------------------------
-// end of getMLBSchedule() function
-// --------------------------------------------------------------------------------------
+//     var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=" + team;
 
-// --------------------------------------------------------------------------------------
-//  function to return the NBA Schedule
-//  Parameter values:
-//  apiKey - the Base64 encoded Authorization key for this feed 
-// --------------------------------------------------------------------------------------
-function getNBASchedule(apiKey) {
+//     $.ajax ({
+//         url: queryURL,
+//         headers: {
+//             "Authorization": apiKey
+//         },
+//     }).then(function(response) {
+//         console.log(response);
+//     });
 
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-76ers",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        console.log(response);
-    });
+// };
+// // --------------------------------------------------------------------------------------
+// // end of getMLBSchedule() function
+// // --------------------------------------------------------------------------------------
 
-};
-// --------------------------------------------------------------------------------------
-// end of getNBASchedule() function
-// --------------------------------------------------------------------------------------
+// // --------------------------------------------------------------------------------------
+// //  function to return the NBA Schedule
+// //  Parameter values:
+// //  apiKey - the Base64 encoded Authorization key for this feed 
+// // --------------------------------------------------------------------------------------
+// function getNBASchedule(apiKey) {
 
-// --------------------------------------------------------------------------------------
-//  function to return the NFL Schedule  **** Currently not Working ****
-//  Parameter values:
-//  apiKey - the Base64 encoded Authorization key for this feed 
-// --------------------------------------------------------------------------------------
-function getNFLSchedule(apiKey) {
+//     $.ajax ({
+//         url: "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=" + team,
+//         headers: {
+//             "Authorization": apiKey
+//         },
+//     }).then(function(response) {
+//         console.log(response);
+//     });
 
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json?type=GET&datatype=json&async=false",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        console.log(response);
-    });
+// };
+// // --------------------------------------------------------------------------------------
+// // end of getNBASchedule() function
+// // --------------------------------------------------------------------------------------
 
-};
-// --------------------------------------------------------------------------------------
-// end of getNFLSchedule() function
-// --------------------------------------------------------------------------------------
+// // --------------------------------------------------------------------------------------
+// //  function to return the NFL Schedule  **** Currently not Working ****
+// //  Parameter values:
+// //  apiKey - the Base64 encoded Authorization key for this feed 
+// // --------------------------------------------------------------------------------------
+// function getNFLSchedule(apiKey) {
 
-// --------------------------------------------------------------------------------------
-//  function to return the NHL Schedule
-//  Parameter values:
-//  apiKey - the Base64 encoded Authorization key for this feed 
-// --------------------------------------------------------------------------------------
-function getNHLSchedule(apiKey) {
+//     $.ajax ({
+//         url: "https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json?type=GET&datatype=json&async=false",
+//         headers: {
+//             "Authorization": apiKey
+//         },
+//     }).then(function(response) {
+//         console.log(response);
+//     });
 
-    $.ajax ({
-            url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
-            // url: queryURL,
-            headers: {
-                "Authorization": apiKey
-            },
-        }).then(function(response) {
-            console.log(response);
-        });
+// };
+// // --------------------------------------------------------------------------------------
+// // end of getNFLSchedule() function
+// // --------------------------------------------------------------------------------------
 
-};
+// // --------------------------------------------------------------------------------------
+// //  function to return the NHL Schedule
+// //  Parameter values:
+// //  apiKey - the Base64 encoded Authorization key for this feed 
+// // --------------------------------------------------------------------------------------
+// function getNHLSchedule(apiKey) {
+
+//     $.ajax ({
+//             url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
+//             headers: {
+//                 "Authorization": apiKey
+//             },
+//         }).then(function(response) {
+//             console.log(response);
+//         });
+
+// };
 // --------------------------------------------------------------------------------------
 // end of getNHLSchedule() function
 // --------------------------------------------------------------------------------------
