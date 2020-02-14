@@ -184,6 +184,10 @@ $('body').on('click', ".dropdown-item:button", function () {
     // update the Header with the team selected
     $("#teamNameEntry").text(teamName);
 
+    // update team name in schedule table
+    $("#team-display").text(teamName);
+
+    // coordinate the colors for the selected team
     setBackgroundColorNBA(teamName);
     setBackgroundColorNFL(teamName);
     setBackgroundColorNHL(teamName);
@@ -302,16 +306,17 @@ function buildGameSchedule(apiResponse) {
     for (i=0; i < games.length; i++) {
 
         // Create the new row of games to display
-        // newRow = $("<tr>").append(
-        //         $("<td>").text("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
-        //                         + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
-        // );
-        // newRow.addClass("game-row");   --- use the game-row class to define the click event listener to trigger the other API call.
-        // newRow.attr("date", games[i].date);
-        // newRow.attr("location", games[i].homeTeam.City);
+        newRow = $("<tr>").append(
+                $("<td>").text(games[i].date + "/" + games[i].time),
+                $("<td>").text(games[i].awayTeam.City + " " + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
+        );
+        // use the game-row class to define the click event listener to trigger the other API call.
+        newRow.addClass("game-row");  
+        newRow.attr("date", games[i].date);
+        newRow.attr("location", games[i].homeTeam.City);
 
         // Append the new row to the table
-        // $("#sched-table > tbody").append(newRow);
+        $("#sched-table > tbody").append(newRow);
 
         // log it for testing until there is a table to append to
         console.log("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
