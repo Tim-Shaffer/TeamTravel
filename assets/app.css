@@ -1,5 +1,5 @@
 .team-selection {
-
+font-size:120% !important;
 display:inline-block;
 height:120px;
 width:220px;
@@ -32,7 +32,6 @@ header{
 }
 
 header section{
-  font-size: 250%;
   max-width:80%;
   color:white;
   background:rgba(0,0,0,1); 
@@ -49,6 +48,7 @@ header section{
   position: relative;
   top:0px;
   left:0px;
+ 
  
   
 }
@@ -82,7 +82,7 @@ header section{
 
 .copy{
   position:absolute; 
-  top:61%; 
+  top:55%; 
   height:10em; 
   margin-top:-5em; 
   width:100%;
@@ -99,7 +99,7 @@ header section{
 h1{
   margin:0px;
   font-family: 'Roboto Slab', serif;
-  font-weight:400;
+  font: weight 400;
   font-size:32px;
   padding:0px 20px;
 }
