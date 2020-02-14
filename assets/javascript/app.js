@@ -240,7 +240,7 @@ function buildGameSchedule(apiResponse) {
 
     for (i=0; i < apiResponse.fullgameschedule.gameentry.length; i++) {
         games.push(apiResponse.fullgameschedule.gameentry[i]);
-    }
+    };
 
     // iterate over games and build a row for each game
     for (i=0; i < games.length; i++) {
