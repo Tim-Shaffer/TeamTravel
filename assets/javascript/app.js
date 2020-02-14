@@ -1,5 +1,17 @@
 // Global variables for league arrays of teams
 // alphabetical array of MLB Teams
+let PcolsNBA = ["#26282A","#000000","#000000","#1D1160","#000000","#6F263D","#00538C","#0E2240","#1D42BA","#1D428A",
+"#000000","#002D62","#C8102E","#552583","#12173F","#98002E",
+"#00471B","#0C2340","#0C2340","#006BB6","#002D62","#0077C0",
+"#006BB6","#1D1160","#000000","#5A2D81","#000000","#000000",
+"#002B5C","#002B5C"
+]; 
+
+let ScolsNBA = ["#E03A3E","#007A33","#FFFFFF","#00788C","#CE1141","#FFB81C","#B8C4CA","#FEC524","#C8102E","#FFC72C",
+"#CE1141","#FDBB30","#BEC0C2","#FDB927","#5D76A9","#F9A01B",
+"#EEE1C6","#9EA2A2","#C8102E","#F58426","#EF3B24","#C4CED4","#ED174C","#E56020","#E03A3E","#63727A","#C4CED4","#CE1141","#F9A01B","#E31837"];
+
+
 let mlbArray = ["Arizona Diamondbacks", "Atlanta Braves", "Baltimore Orioles", "Boston Red Sox", "Chicago Cubs", "Chicago White Sox", "Cincinnati Reds", "Cleveland Indians",
 "Colorado Rockies", "Detroit Tigers", "Houston Astros", "Kansas City Royals", "Los Angeles Angels", "Los Angeles Dodgers", "Miami Marlins", "Milwaukee Brewers", "Minnesota Twins",
 "New York Mets", "New York Yankees", "Oakland Athletics", "Philadelphia Phillies", "Pittsburgh Pirates", "San Diego Padres", "San Francisco Giants", "Seattle Mariners", "St. Louis Cardinals",
@@ -127,6 +139,8 @@ $('body').on('click', ".dropdown-item:button", function () {
     var teamName = tag.val();
 
     console.log("Selected Value: " + teamName);
+    setBackgroundColor(teamName);
+
 
     // get the league back from local storage **** may look to change to session storage instead
     var league = localStorage.getItem("league");
@@ -280,8 +294,28 @@ function getNHLSchedule(apiKey) {
 // --------------------------------------------------------------------------------------
 $(document).ready(function () {
     $("#selectLeagureAndTeam").modal("show");
-}); 
-// --------------------------------------------------------------------------------------
+});  
+//
 
 //  end of document ready action
-// --------------------------------------------------------------------------------------
+// 
+//--------------------------------------------------------------------------------------
+
+ function setBackgroundColor(team) {
+
+
+    for (j = 0; j < nbaArray.length; j++){
+
+     var primaryColor=PcolsNBA[j];
+     var secondaryColor=ScolsNBA[j];
+
+
+     if (team === nbaArray[j]) {
+         $('#logo').attr('style', 'background:'+primaryColor+';color:'+secondaryColor+';"');
+    
+        
+     }
+
+ };
+
+};
