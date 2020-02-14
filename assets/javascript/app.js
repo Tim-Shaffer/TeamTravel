@@ -1,5 +1,8 @@
 // Global variables for league arrays of teams
 // alphabetical array of MLB Teams
+
+
+
 let PcolsNBA = ["#26282A","#000000","#000000","#1D1160","#000000","#6F263D","#00538C","#0E2240","#1D42BA","#1D428A",
 "#000000","#002D62","#C8102E","#552583","#12173F","#98002E",
 "#00471B","#0C2340","#0C2340","#006BB6","#002D62","#0077C0",
@@ -10,6 +13,49 @@ let PcolsNBA = ["#26282A","#000000","#000000","#1D1160","#000000","#6F263D","#00
 let ScolsNBA = ["#E03A3E","#007A33","#FFFFFF","#00788C","#CE1141","#FFB81C","#B8C4CA","#FEC524","#C8102E","#FFC72C",
 "#CE1141","#FDBB30","#BEC0C2","#FDB927","#5D76A9","#F9A01B",
 "#EEE1C6","#9EA2A2","#C8102E","#F58426","#EF3B24","#C4CED4","#ED174C","#E56020","#E03A3E","#63727A","#C4CED4","#CE1141","#F9A01B","#E31837"];
+
+let PcolsMLB = ["#E3D4AD", "#CE1141", "#FC4C02", "#BD3039", "#0E3386", "#C4CED4", "#C6011F", "#0C2340",
+    "#33006F", "#0C2340", "#EB6E1F", "#004687", "#BA0021", "#005A9C", "#00A3E0", "#0A2351", "#002B5C",
+    "#002D72", "#003087", "#003831", "#E81828", "#FDB827", "#2F241D", "#FD5A1E", "#0C2C56", "#C41E3A",
+    "#092C5C", "#003278", "#134A8E", "#AB0003"
+]; 
+
+let ScolsMLB = ["#A71930", "#13274F", "#27251F", "#0C2340", "#CC3433", "#27251F", "#000000", "#E31937",
+    "#C4CED4", "#FA4616", "#002D62", "#BD9B60", "#003263", "#A5ACAF", "#EF3340", "#B6922E", "#D31145",
+    "#FF5910", "#E4002C", "#EFB21E", "#002D72", "#27251F", "#FFC425", "#27251F", "#005C5C", "#0C2340",
+    "#8FBCE6", "#C0111F", "#1D2D5C", "#14225A"
+]; 
+
+
+
+let PcolsNHL = ["#F47A38", "#8C2633", "#FFB81C", "#002654", "#C8102E", "#CC0000", "#CF0A2C", "#6F263D", "#002654",
+    "#006847", "#CE1126", "#041E42", "#041E42", "#111111", "#154734", "#AF1E2D", "#FFB81C", "#CE1126",
+    "#00539B", "#0038A8", "#C52032", "#F74902", "#FCB514", "#006D75", "#002F87", "#002868",
+    "#00205B", "#00205B", "#B4975A", "041E42", "#041E42"
+];
+
+let ScolsNHL = ["#B9975B", "#E2D6B5", "#000000", "#FCB514", "#F1BE48", "#000000", "#000000", "#236192", "#CE1126",
+    "#8F8F8C", "#FFFFFF", "#FF4C00", "#C8102E", "#A2AAAD", "#A6192E", "#192168", "#041E42", "#000000",
+    "#F47D30", "#CE1126", "#C2912C", "#000000", "#000000", "#EA7200", "#FCB514", "#FFFFFF",
+    "#FFFFFF", "#00843D", "#333F42", "#C8102E", "#004C97"
+]; 
+
+
+let PcolsNFL = ["#A71930", "#97233F", "#241773", "#00338D", "#0085CA", "#0B162A", "#FB4F14", "#FF3C00", "#003594",
+    "#FB4F14", "#0076B6", "#203731", "#03202F", "#002C5F", "#006778", "#E31837", "#0080C6", "#002244",
+    "#008E97", "#4F2683", "#002244", "#D3BC8D", "#0B2265", "#125740", "#A5ACAF", "#004C54", "#FFB612", "#AA0000",
+    "#002244", "#D50A0A", "#0C2340", "#773141"
+];
+
+let ScolsNFL = ["#000000", "#000000", "#000000", "#C60C30", "#101820", "#C83803", "#000000", "#311D00", "#041E42",
+    "#002244", "#B0B7BC", "#FFB612", "#A71930", "#A2AAAD", "#9F792C", "#FFB81C", "#FFC20E", "#866D4B",
+    "#FC4C02", "#4F2683", "#C60C30", "#101820", "#A71930", "#000000", "#000000", "#004C54", "#101820", "#B3995D",
+    "#69BE28", "#0A0A08", "#4B92DB", "#FFB612"
+]; 
+
+
+
+
 
 
 let mlbArray = ["Arizona Diamondbacks", "Atlanta Braves", "Baltimore Orioles", "Boston Red Sox", "Chicago Cubs", "Chicago White Sox", "Cincinnati Reds", "Cleveland Indians",
@@ -69,12 +115,14 @@ $('input:radio').on('click', function() {
     var league = this.value;  // need to make sure that there is a value attribute on the radio buttons ****
     console.log(league); 
 
+
     // add the league to local storage
     localStorage.setItem("league", league);
 
     // **** needed the value attributes added to the html
     // **** added function call
     loadTeamSelectList(league);
+    
 
 });
 // --------------------------------------------------------------------------------------
@@ -106,6 +154,8 @@ function loadTeamSelectList(league) {
         } else if (league === "NHL") {
             array = nhlArray;
         };
+
+
 
         // basics found on https://www.caveofprogramming.com/guest-posts/introduction-to-jquery-populating-creating-dynamic-dropdowns.html
         // remove any previously added options
@@ -139,7 +189,12 @@ $('body').on('click', ".dropdown-item:button", function () {
     var teamName = tag.val();
 
     console.log("Selected Value: " + teamName);
-    setBackgroundColor(teamName);
+    setBackgroundColorNBA(teamName);
+    setBackgroundColorNFL(teamName);
+    setBackgroundColorNHL(teamName);
+    setBackgroundColorMLB(teamName);
+
+
 
 
     // get the league back from local storage **** may look to change to session storage instead
@@ -300,22 +355,56 @@ $(document).ready(function () {
 //  end of document ready action
 // 
 //--------------------------------------------------------------------------------------
+function setBackgroundColorNBA(team) {
 
- function setBackgroundColor(team) {
+    for (j = 0; j < nbaArray.length; j++) {
 
+        var primaryColorNBA = PcolsNBA[j];
+        var secondaryColorNBA = ScolsNBA[j];
 
-    for (j = 0; j < nbaArray.length; j++){
-
-     var primaryColor=PcolsNBA[j];
-     var secondaryColor=ScolsNBA[j];
-
-
-     if (team === nbaArray[j]) {
-         $('#logo').attr('style', 'background:'+primaryColor+';color:'+secondaryColor+';"');
-    
-        
-     }
-
- };
-
+        if (team === nbaArray[j]) {
+            $('#logo').attr('style', 'background:' + primaryColorNBA + ';color:' + secondaryColorNBA + ';"');
+        }
+    };
 };
+
+function setBackgroundColorMLB(team) {
+
+    for (j = 0; j < mlbArray.length; j++) {
+
+        var primaryColorMLB = PcolsMLB[j];
+        var secondaryColorMLB = ScolsMLB[j];
+
+        if (team === mlbArray[j]) {
+            $('#logo').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
+        }
+    };
+};
+
+function setBackgroundColorNFL(team) {
+
+    for (j = 0; j < nflArray.length; j++) {
+
+        var primaryColorNFL = PcolsNFL[j];
+        var secondaryColorNFL = ScolsNFL[j];
+
+        if (team === nflArray[j]) {
+            $('#logo').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
+        }
+    };
+};
+
+function setBackgroundColorNHL(team) {
+
+    for (j = 0; j < nhlArray.length; j++) {
+
+        var primaryColorNHL = PcolsNHL[j];
+        var secondaryColorNHL = ScolsNHL[j];
+
+        if (team === nhlArray[j]) {
+            $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+        }
+    };
+};
+
+
