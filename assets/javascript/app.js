@@ -101,7 +101,7 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
-            $("#dropdown-list").append('<option value="'+ array[i]+'">'+ array[i] +'</option>');
+            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
         };  
         
         return true;
@@ -120,13 +120,20 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
-$("#dropdown-list").on("click",function(){
+
+$('body').on('click', ".dropdown-item:button", function () {
     console.log("Event Trigerred");
-    var teamName = $("option").val();
+    var tag = $(this);
+    var teamName = tag.val();
+
     console.log("Selected Value: " + teamName);
 
     // get the league back from local storage **** may look to change to session storage instead
     var league = localStorage.getItem("league");
+
+    // update the Header with the team selected
+    $("#teamNameEntry").text(teamName);
+
 
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
@@ -192,7 +199,6 @@ function getMLBSchedule(apiKey){
 
     $.ajax ({
         url: "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies",
-        // url: queryURL,
         headers: {
             "Authorization": apiKey
         },
@@ -267,4 +273,15 @@ function getNHLSchedule(apiKey) {
 };
 // --------------------------------------------------------------------------------------
 // end of getNHLSchedule() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// Show modal when the page is ready. 
+// --------------------------------------------------------------------------------------
+$(document).ready(function () {
+    $("#selectLeagureAndTeam").modal("show");
+}); 
+// --------------------------------------------------------------------------------------
+
+//  end of document ready action
 // --------------------------------------------------------------------------------------
