@@ -188,10 +188,15 @@ $('body').on('click', ".dropdown-item:button", function () {
     $("#team-display").text(teamName);
 
     // coordinate the colors for the selected team
-    setBackgroundColorNBA(teamName);
-    setBackgroundColorNFL(teamName);
-    setBackgroundColorNHL(teamName);
-    setBackgroundColorMLB(teamName);
+    if (league.toUpperCase() === "MLB") {
+        setBackgroundColorMLB(teamName);
+    } else if (league.toUpperCase() === "NBA") {
+        setBackgroundColorNBA(teamName);
+    } else if (league.toUpperCase() === "NFL") {
+        setBackgroundColorNFL(teamName);
+    } else if (league.toUpperCase() === "NHL") {
+        setBackgroundColorNHL(teamName);
+    }; 
 
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
