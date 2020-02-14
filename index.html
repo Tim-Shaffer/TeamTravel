@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,270 +16,277 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    
+
     <!-- Link for Bootstrap Styling -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    
+
     <!--  -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    
+
+    <!-- Link to Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
     <!--  -->
     <link href="https://fonts.googleapis.com/css?family=Rouge+Script&display=swap" rel="stylesheet">
-    
+
     <!-- Personal Stylesheet -->
-    <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
-    
+    <link href="assets/css/app.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="row-centered column-centered">
 
 
-<!-- HTML for modal  -->
-<div id="selectLeagureAndTeam" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg" style="height: inherit;" role="content">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header" style="background: gray">
-                <h4 class="modal-title" style="color:white">Register Here!</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form>
+    <!-- HTML for modal  -->
 
-                    <div class="card-body col-12" style="background-color: #999999; position: align-self-center">
-  
-                        <div class="row">
-                            <div class="col-5">
-                                <fieldset data-role="controlgroup" data-type="horizontal">
-                                    <legend>Select A League:</legend>
-                                    <div class="radio">
-                                        <label><input id="nfl" type="radio" name="optradio" value="nfl" unchecked>NFL</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input id="nba" type="radio" name="optradio" value="nba" uncheked>NBA</label>
-                                    </div>
-                                    <div class="radio disabled">
-                                        <label><input id="nhl" type="radio" name="optradio" value="nhl" unchecked>NHL</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input id="mlb" type="radio" name="optradio" value="mlb" unchecked>MLB</label>
-                                    </div>
-                                </fieldset>
-                            </div>
-
-                            <div class="col-5">
-                                
-                                <!-- New HTML for dropdown -->
-                                <div class="dropdown" id="team-dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select a Team
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
-
-                                    
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row">
+    <div id="selectLeagureAndTeam" class="modal fade" role="dialog">
+        
+        <div class="modal-dialog modal-lg" style="height: inherit;" role="content">
+            <!-- Modal content-->
+            
+            <div class="modal-content">
+                
+                <div class="modal-header" style="background: gray">
+                    
+                    <h4 class="modal-title" style="color:white">Register Here!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+                </div>
+                
+                <div class="modal-body">
+                    
+                    <form>
+                        
+                        <div class="card-body col-12" style="background-color: #999999; position: align-self-center">
+                            
+                            <div class="row">
                                 
                                 <div class="col-5">
-                                    <br>
-                                    <label for="Name" style="color:black">Name:</label>
-                                    <input style="width:140px; position: align-self-center;" id="name" type="text" class="form-control"
-                                        name="fullname"><br>
+                                    
+                                    <fieldset data-role="controlgroup" data-type="horizontal">
+                                        <legend>Select A League:</legend>
+                                        
+                                        <div class="radio">
+                                            <label><input id="nfl" type="radio" name="optradio" value="nfl">NFL</label>
+                                        </div>
+                                        
+                                        <div class="radio">
+                                            <label><input id="nba" type="radio" name="optradio" value="nba">NBA</label>
+                                        </div>
+                                        
+                                        <div class="radio enabled">
+                                            <label><input id="nhl" type="radio" name="optradio" value="nhl">NHL</label>
+                                        </div>
+                                        
+                                        <div class="radio">
+                                            <label><input id="mlb" type="radio" name="optradio" value="mlb">MLB</label>
+                                        </div>
+                                    
+                                    </fieldset>
                                 
                                 </div>
 
-                            <div class="col-5">
-                                <br>
-                                <br>
-                                <br>
-                                <div class="d-flex justify-content-left">
-                                    <button type="submit" class="btn btn-primary" id="sub-button" data-dismiss="modal">Submit</button>
-                                
-                                
+                                <div class="col-5">
+
+                                    <!-- New HTML for dropdown -->
+                                    <div class="dropdown" id="team-dropdown">
+                                        
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Select a Team
+                                        </button>
+                                        
+                                        <div class="dropdown-menu team-selection" role="menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
+                                        
+                                        </div>
+
+                                    </div>
+
                                 </div>
-                            
+
+                                <div class="row">
+
+                                    <div class="col-5">
+                                        <br>
+                                        <label for="Name" style="color:black">Name:</label>
+                                        <input style="width:140px; position: align-self-center;" id="name" type="text"
+                                            class="form-control" name="fullname">
+                                        <br>
+
+                                    </div>
+
+                                    <div class="col-5">
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="d-flex justify-content-left">
+                                            <button type="submit" class="btn btn-primary" id="sub-button"
+                                                data-dismiss="modal">Submit
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
                             </div>
-                        
-                        </div>   
-                        
-                    </div>
-                  
-                </form>
+
+                        </div>                       
+
+                    </form>
+
+                </div>
 
             </div>
 
+        </div>
+
+    </div>
+    <!-- End of Modal -->
+
+    <!-- Beginning of Content that is not in the Modal -->
+    <header>
+        
+        <section id="logo">Travel With The <span id="teamNameEntry">Team</span></section>
+    
+    </header>
+
+    <section id="hero1" class="hero">
+        
+        <div class="inner">
+            
+            <div class="copy">
+
+                <h1>Connecting to the World of Sports</h1>
+                <p>See below for upcoming games!</p>
+
+            </div>
+        
         </div>
     
-    </div>
+    </section>
 
-</div>
-<!-- End of Modal -->
+     <!-- Section Container for the schedule -->
+     <section class="container card grid" id="schedule-display">
+        <div class="card mb-4">
 
-<!-- Beginning of Content that is not in the Modal -->
-<header>
-    <section id="logo">Travel With The <span id="teamNameEntry">Team</span></section>
-</header>
-
-<section id="hero1" class="hero">
-    <div class="inner">
-        <div class="copy">
-            
-            <h1>Connecting to the World of Sports</h1>
-            <p>See below for upcoming games!</p>
-
-        </div>
-    </div>
-</section>
-
-<section class="content">
-    <div class="inner">
-<!-- carousel -->
-
-<div class="d-flex justify-content-center">
-    <div class="container d-none d-sm-block" style="margin: 60px 0 40px 0">
-        <div class="row row-content">
-            <div class="col">
-                <div id="mycarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-
-                            <div class="carousel-caption d-none d-sm-block">
-                                feugiat nibh sed pulvinar proin gravida. In
-                                metus vulputate eu scelerisque felis imperdiet proin fermentum. Auctor urna nunc id
-                                cursus metus aliquam eleifend mi. Ac
-                                ut consequat semper viverra nam libero. Sagittis eu volutpat odio facilisis mau
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-
-                            <div class="carousel-caption d-none d-sm-block">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna
-                                aliqua. Aliquam etiam erat velit scelerisque in dictum. Praesent semper
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="carousel-caption d-none d-sm-block">
-
-                                feugiat nibh sed pulvinar proin gravida. In
-                                metus vulputate eu scelerisque felis imperdiet proin fermentum. Auctor urna nunc id
-                                cursus metus aliquam eleifend mi. Ac
-                                ut consequat semper viverra nam libero. Sagittis eu volutpat odio facilisis mau
-                            </div>
-                        </div>
-                    </div>
-
-                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-
-                </div>
-
+            <div class="card-header">
+                
+                <h1>Upcoming Schedule for - <span id="team-display">TEAM</span></h1>
             </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- END OF CAROUSEL -->
-
-        <div class="copy">
-            <h1>Amazing copy!</h1>
-
-
-
-
-        </div>
-    </div>
-</section>
-
-<section id="hero2" class="hero">
-    <div class="inner">
-        <div class="copy">
-            <h1>... Another World of Entertainment</h1>
-            <p>See below for other things to do!</p>
-        </div>
-    </div>
-</section>
-
-<section class="content">
-
-    <div class="inner">
-        
-        <!-- carousel -->
-        <div class="d-flex justify-content-center">
-            <div class="container d-none d-sm-block" style="margin: 60px 0 40px 0">
-                <div class="row row-content">
-                    <div class="col">
-                        <div id="mycarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active">
-                                    
-                                    <div class="carousel-caption d-none d-sm-block">
-                                        feugiat nibh sed pulvinar proin gravida. In
-                                        metus vulputate eu scelerisque felis imperdiet proin fermentum. Auctor urna nunc id cursus metus aliquam eleifend mi. Ac
-                                        ut consequat semper viverra nam libero. Sagittis eu volutpat odio facilisis mau
-                                       
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                   
-                                    <div class="carousel-caption d-none d-sm-block">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Aliquam etiam erat velit scelerisque in dictum. Praesent semper 
-        
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="carousel-caption d-none d-sm-block">
-                                    
-                                        feugiat nibh sed pulvinar proin gravida. In
-                                        metus vulputate eu scelerisque felis imperdiet proin fermentum. Auctor urna nunc id cursus metus aliquam eleifend mi. Ac
-                                        ut consequat semper viverra nam libero. Sagittis eu volutpat odio facilisis mau
-                                    </div>
-                                </div>
-                            </div>
+            
+            <div class="card-body">
+                
+                <div class="table-responsive-sm">
+                    
+                    <table class="table table-striped table-sm table-hover" id='sched-table'>
                         
-                            <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon"></span>
-                            </a>
-                            <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon"></span>
-                            </a>
-        
+                        <thead>
+                            <tr>
+                                <th scope="col">Date/Time</th>
+                                <th scope="col">Details</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+
+                        </tbody>
+                    
+                    </table>
+                
+                </div>
+
+            </div>
+
+        </div>   
+
+    </section>
+    <!-- End of the section Container for the schedule -->
+
+    <section id="hero2" class="hero">
+        <div class="inner">
+            <div class="copy">
+                <h1>... Another World of Entertainment</h1>
+                <p>See below for other things to do!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+
+        <div class="inner">
+
+            <!-- carousel -->
+            <div class="d-flex justify-content-center">
+                <div class="container d-none d-sm-block" style="margin: 60px 0 40px 0">
+                    <div class="row row-content">
+                        <div class="col">
+                            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+
+                                        <div class="carousel-caption d-none d-sm-block">
+                                            feugiat nibh sed pulvinar proin gravida. In
+                                            metus vulputate eu scelerisque felis imperdiet proin fermentum. Auctor urna
+                                            nunc id cursus metus aliquam eleifend mi. Ac
+                                            ut consequat semper viverra nam libero. Sagittis eu volutpat odio facilisis
+                                            mau
+
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+
+                                        <div class="carousel-caption d-none d-sm-block">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna
+                                            aliqua. Aliquam etiam erat velit scelerisque in dictum. Praesent semper
+
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="carousel-caption d-none d-sm-block">
+
+                                            feugiat nibh sed pulvinar proin gravida. In
+                                            metus vulputate eu scelerisque felis imperdiet proin fermentum. Auctor urna
+                                            nunc id cursus metus aliquam eleifend mi. Ac
+                                            ut consequat semper viverra nam libero. Sagittis eu volutpat odio facilisis
+                                            mau
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+
+                            </div>
+
                         </div>
-        
                     </div>
                 </div>
+
             </div>
-                                                                        
-        </div>
-        
-        
-        <!-- END OF CAROUSEL -->
 
 
-        <div class="copy">
-            
-           
-         
+            <!-- END OF CAROUSEL -->
+
+
+            <div class="copy">
+
+
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
@@ -289,5 +297,3 @@
 </body>
 
 </html>
-
-
