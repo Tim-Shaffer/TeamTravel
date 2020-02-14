@@ -120,10 +120,12 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
+
 $('body').on('click', ".dropdown-item:button", function () {
     console.log("Event Trigerred");
     var tag = $(this);
     var teamName = tag.val();
+
     console.log("Selected Value: " + teamName);
 
     // get the league back from local storage **** may look to change to session storage instead
@@ -131,6 +133,7 @@ $('body').on('click', ".dropdown-item:button", function () {
 
     // update the Header with the team selected
     $("#teamNameEntry").text(teamName);
+
 
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
@@ -196,7 +199,6 @@ function getMLBSchedule(apiKey){
 
     $.ajax ({
         url: "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies",
-        // url: queryURL,
         headers: {
             "Authorization": apiKey
         },
@@ -280,5 +282,6 @@ $(document).ready(function () {
     $("#selectLeagureAndTeam").modal("show");
 }); 
 // --------------------------------------------------------------------------------------
+
 //  end of document ready action
 // --------------------------------------------------------------------------------------
