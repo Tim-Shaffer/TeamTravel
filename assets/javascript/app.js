@@ -193,7 +193,6 @@ $('body').on('click', ".dropdown-item:button", function () {
     setBackgroundColorNHL(teamName);
     setBackgroundColorMLB(teamName);
 
-
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
 
@@ -251,9 +250,7 @@ function getSchedule(league, teamName) {
         // bulid schedule table based on json returned
         buildGameSchedule(response);
 
-    });
-
-    
+    });   
 
 };
 // --------------------------------------------------------------------------------------
@@ -292,10 +289,14 @@ $(document).ready(function () {
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
+//  function to populate the schedule display section upon successful return from the API
 // --------------------------------------------------------------------------------------
 function buildGameSchedule(apiResponse) {
 
+    // local variable to hold the array of games
     let games = [];
+
+    // local variable for the table row tag
     var newRow;
 
     for (i=0; i < apiResponse.fullgameschedule.gameentry.length; i++) {
@@ -322,12 +323,16 @@ function buildGameSchedule(apiResponse) {
         console.log("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
                     + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name);
 
-    }
+    };
 
 };
 // --------------------------------------------------------------------------------------
+// end of buildGameSchedule() function
 // --------------------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+// function for coloring of sections based on an NBA team
+// --------------------------------------------------------------------------------------
 function setBackgroundColorNBA(team) {
 
     for (j = 0; j < nbaArray.length; j++) {
@@ -340,7 +345,13 @@ function setBackgroundColorNBA(team) {
         }
     };
 };
+// --------------------------------------------------------------------------------------
+// end of setBackgroundColorNBA() function
+// --------------------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+// function for coloring of sections based on an NBA team
+// --------------------------------------------------------------------------------------
 function setBackgroundColorMLB(team) {
 
     for (j = 0; j < mlbArray.length; j++) {
@@ -353,7 +364,13 @@ function setBackgroundColorMLB(team) {
         }
     };
 };
+// --------------------------------------------------------------------------------------
+// end of setBackgroundColorMLB() function
+// --------------------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+// function for coloring of sections based on an NFL team
+// --------------------------------------------------------------------------------------
 function setBackgroundColorNFL(team) {
 
     for (j = 0; j < nflArray.length; j++) {
@@ -366,7 +383,13 @@ function setBackgroundColorNFL(team) {
         }
     };
 };
+// --------------------------------------------------------------------------------------
+// end of setBackgroundColorNFL() function
+// --------------------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+// function for coloring of sections based on an NHL team
+// --------------------------------------------------------------------------------------
 function setBackgroundColorNHL(team) {
 
     for (j = 0; j < nhlArray.length; j++) {
@@ -379,3 +402,6 @@ function setBackgroundColorNHL(team) {
         }
     };
 };
+// --------------------------------------------------------------------------------------
+// end of setBackgroundColorNHL() function
+// --------------------------------------------------------------------------------------
