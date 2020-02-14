@@ -28,6 +28,7 @@ header{
   width:100%; 
   height: inherit; 
   background:rgba(#fff);
+ 
 }
 
 header section{
@@ -45,9 +46,10 @@ header section{
   text-transform:uppercase; 
   letter-spacing:2px; 
   font-weight:700;
-  position:relative;
+  position: relative;
   top:0px;
   left:0px;
+ 
   
 }
 #hero1{
@@ -55,6 +57,7 @@ header section{
   background-size:cover;
   background-position:center center;
   background-attachment:fixed;
+ 
 }
 #hero2{background: url(https://media3.giphy.com/media/6odUwsfT1xl1fuhXlM/giphy.gif?cid=790b7611c968023fd25245e5375cda7151fa544dd6b646f8&amp);
   background-size:cover;
@@ -70,6 +73,7 @@ header section{
 .inner{
   min-height:600px;
   position: relative;
+
 }
 
 .hero .inner{
@@ -159,6 +163,11 @@ z-index: 0;
 .carousel-control-next {
 
 z-index: 0;
+
+
+}
+#logo{
+opacity: .3;
 
 
 }
