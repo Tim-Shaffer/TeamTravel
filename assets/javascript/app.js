@@ -141,6 +141,9 @@ $('#sub-button').on('click', function(event) {
     // get the user from the input and store it in a variable.
     var userName = $('#name').val().trim();
     // console.log(userName);
+
+    // capitalize the user entry
+    userName  = capital_letter(userName );
     
     // add the user to session storage.
     sessionStorage.setItem("username", userName);
@@ -462,6 +465,8 @@ function getEvent(date, location) {
         method: "GET"
     }).then(function(response) {
 
+        console.log(response);
+
         buildEventList(response);
 
         // show the event section
@@ -498,14 +503,18 @@ function buildEventList(apiResponse) {
     // iterate over events and build a row for each event
     for (i=0; i < events.length; i++) {
 
-        // Create the new row of games to display
-        displayDateTime = events[i].dates.start.dateTime.substring(0,10);
-        displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
-        
-        newRow = $("<tr>").append(
-                $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
-                $("<td>").text(events[i].name),
-        );
+        if (events[i].dates.start.dateTime) {
+
+            // Create the new row of games to display
+            displayDateTime = events[i].dates.start.dateTime.substring(0,10);
+            displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
+            
+            newRow = $("<tr>").append(
+                    $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
+                    $("<td>").text(events[i].name),
+            );
+            
+        };
         
         // Append the new row to the table
         $("#event-table > tbody").append(newRow);
@@ -532,7 +541,10 @@ $('body').on('click', ".clickable-row", function () {
     var locale = tag.attr("location");
  
     // update the display with the location selected
-    $("#location-display").text(locale);
+    $("#location-display").text(locale + " ");
+
+    // update the display with the date selected
+    $("#date-display").text(gameDate);
 
     // call the TicketMaster API to get the events
     getEvent(gameDate, locale);
@@ -540,4 +552,24 @@ $('body').on('click', ".clickable-row", function () {
 });
 // --------------------------------------------------------------------------------------
 // end of event listener that gets triggerred on click of a game 
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// function to capitalize the text before saving it.
+// Found this function on W3 schools - https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-50.php
+// --------------------------------------------------------------------------------------
+function capital_letter(str) {
+    // separate the str parameter into pieces based on the 'space' separator
+    str = str.split(" ");
+
+    // traverse the string pieces and convert the first character of each word to Upper Case and then concatenate the rest of the string.
+    for (let i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    // return the capitalize string put back together with the 'space' separator.
+    return str.join(" ");
+};
+// --------------------------------------------------------------------------------------
+// end of the capital_letter() function
 // --------------------------------------------------------------------------------------
