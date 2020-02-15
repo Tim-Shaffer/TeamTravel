@@ -90,16 +90,16 @@ let nflArray = [{name: "Atlanta Falcons", primColor: "#A71930", secColor: "#0000
 {name: "NY Giants", primColor: "#0B2265", secColor: "#A71930",}, 
 {name: "NY Jets", primColor: "#125740", secColor: "#000000",}, 
 {name: "Oakland Raiders", primColor: "#A5ACAF", secColor: "#000000",}, 
-{name: "Philadelphia Eagles", primColor: "#004C54", secColor: "#004C54",}, 
+{name: "Philadelphia Eagles", primColor: "#004C54", secColor: "",}, 
 {name: "Pittsburgh Steelers", primColor: "#FFB612", secColor: "#101820",}, 
 {name: "San Francisco 49ers", primColor: "#AA0000", secColor: "#B3995D",},
-{name: "Seattle Seahawks", primColor: "#002244", secColor: "#69BE28",}, 
+{name: "Seattle Seahawks", primColor: "#002244", secColor: "#A5ACAF",}, 
 {name: "Tampa Bay Buccaneers", primColor: "#D50A0A", secColor: "#0A0A08",}, 
 {name: "Tennessee Titans", primColor: "#0C2340", secColor: "#4B92DB",}, 
 {name: "Washington Redskins", primColor: "#773141", secColor: "#FFB612"}];
 
 // alphabetical array of NHL Teams
-let nhlArray = [{name: "Anaheim Ducks", primColor: "#F47A38", secColor: "#B9975B"}, 
+let nhlArray = [{name: "Anaheim Ducks", primColor: "#F47A38", secColor: "#C1C6C8"}, 
 {name: "Arizona Coyotes", primColor: "#8C2633", secColor: "#E2D6B5"}, 
 {name: "Boston Bruins", primColor: "#FFB81C", secColor: "#000000"},  
 {name: "Buffalo Sabres", primColor: "#002654", secColor: "#FCB514"}, 
@@ -170,9 +170,13 @@ $('input:radio').on('click', function() {
     // add the league to session storage
     sessionStorage.setItem("league", league);
 
-    // **** needed the value attributes added to the html
-    // **** added function call
+    // function call to load the list of teams
     loadTeamSelectList(league);
+
+    // 
+    $("#dropdownMenuButton").show().css("inline-block");
+    $(".team-selection").show().css("inline-block");
+    $("#enterName").show().css("inline-block");
 
 });
 // --------------------------------------------------------------------------------------
@@ -424,8 +428,22 @@ function setBackgroundColor(team, array) {
 
     $('#logo').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
     $('#schedule-display').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $("#modalHeading").attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+
+    $('.modal-body').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $('.modal-header').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    // $('.names').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
 
 };
 // --------------------------------------------------------------------------------------
 // end of setBackgroundColor() function
 // --------------------------------------------------------------------------------------
+
+function getEvent() {
+    $.ajax({
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=Philadelphia&stateCode=PA&startDateTime=2020-02-15T01:00:00Z",
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+    });
+ };
