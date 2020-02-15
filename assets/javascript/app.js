@@ -1,134 +1,135 @@
 // Global variables for league arrays of teams 
+//  Team objects contain the Team Name, the primary color, and the secondary color.  Colors are used for styling
 // alphabetical array of MLB Teams
-let mlbArray = [{name: "Arizona Diamondbacks", pcol: "#E3D4AD", scol: "#A71930",}, 
-{name: "Atlanta Braves", pcol: "#CE1141", scol: "#13274F",}, 
-{name: "Baltimore Orioles", pcol: "#FC4C02", scol: "#27251F",}, 
-{name: "Boston Red Sox", pcol: "#BD3039", scol: "#0C2340",}, 
-{name: "Chicago Cubs", pcol: "#0E3386", scol: "#CC3433",}, 
-{name: "Chicago White Sox", pcol: "#C4CED4", scol: "#27251F",}, 
-{name: "Cincinnati Reds", pcol: "#C6011F", scol: "#000000",}, 
-{name: "Cleveland Indians", pcol: "#0C2340", scol: "#E31937",},
-{name: "Colorado Rockies", pcol: "#33006F", scol: "#C4CED4",}, 
-{name: "Detroit Tigers", pcol: "#0C2340", scol: "#FA4616",}, 
-{name: "Houston Astros", pcol: "#EB6E1F", scol: "#002D62", }, 
-{name: "Kansas City Royals", pcol: "#004687", scol: "#BD9B60",}, 
-{name: "Los Angeles Angels", pcol: "#BA0021", scol: "#003263",}, 
-{name: "Los Angeles Dodgers", pcol: "#005A9C", scol: "#A5ACAF",}, 
-{name: "Miami Marlins", pcol: "#00A3E0", scol: "#EF3340",}, 
-{name: "Milwaukee Brewers", pcol: "#0A2351", scol: "#B6922E",}, 
-{name: "Minnesota Twins", pcol: "#002B5C", scol: "#D31145",},
-{name: "New York Mets", pcol: "#002D72", scol: "#FF5910",}, 
-{name: "New York Yankees", pcol: "#003087", scol: "#E4002C",}, 
-{name: "Oakland Athletics", pcol: "#003831", scol: "#EFB21E",}, 
-{name: "Philadelphia Phillies", pcol: "#E81828", scol: "#002D72",}, 
-{name: "Pittsburgh Pirates", pcol: "#FDB827", scol: "#27251F",}, 
-{name: "San Diego Padres", pcol: "#2F241D", scol: "#FFC425",}, 
-{name: "San Francisco Giants", pcol: "#FD5A1E", scol: "#27251F",}, 
-{name: "Seattle Mariners", pcol: "#0C2C56", scol: "#005C5C",}, 
-{name: "St. Louis Cardinals", pcol: "#C41E3A", scol: "#0C2340",},
-{name: "Tampa Bay Rays", pcol: "#092C5C", scol: "#8FBCE6",}, 
-{name: "Texas Rangers", pcol: "#003278", scol: "#C0111F",}, 
-{name: "Toronto Blue Jays", pcol: "#134A8E", scol: "#1D2D5C",}, 
-{name: "Washington Nationals", pcol: "#AB0003", scol: "#14225A"}];
+let mlbArray = [{name: "Arizona Diamondbacks", primColor: "#E3D4AD", secColor: "#A71930",}, 
+{name: "Atlanta Braves", primColor: "#CE1141", secColor: "#13274F",}, 
+{name: "Baltimore Orioles", primColor: "#FC4C02", secColor: "#27251F",}, 
+{name: "Boston Red Sox", primColor: "#BD3039", secColor: "#0C2340",}, 
+{name: "Chicago Cubs", primColor: "#0E3386", secColor: "#CC3433",}, 
+{name: "Chicago White Sox", primColor: "#C4CED4", secColor: "#27251F",}, 
+{name: "Cincinnati Reds", primColor: "#C6011F", secColor: "#000000",}, 
+{name: "Cleveland Indians", primColor: "#0C2340", secColor: "#E31937",},
+{name: "Colorado Rockies", primColor: "#33006F", secColor: "#C4CED4",}, 
+{name: "Detroit Tigers", primColor: "#0C2340", secColor: "#FA4616",}, 
+{name: "Houston Astros", primColor: "#EB6E1F", secColor: "#002D62", }, 
+{name: "Kansas City Royals", primColor: "#004687", secColor: "#BD9B60",}, 
+{name: "Los Angeles Angels", primColor: "#BA0021", secColor: "#003263",}, 
+{name: "Los Angeles Dodgers", primColor: "#005A9C", secColor: "#A5ACAF",}, 
+{name: "Miami Marlins", primColor: "#00A3E0", secColor: "#EF3340",}, 
+{name: "Milwaukee Brewers", primColor: "#0A2351", secColor: "#B6922E",}, 
+{name: "Minnesota Twins", primColor: "#002B5C", secColor: "#D31145",},
+{name: "New York Mets", primColor: "#002D72", secColor: "#FF5910",}, 
+{name: "New York Yankees", primColor: "#003087", secColor: "#E4002C",}, 
+{name: "Oakland Athletics", primColor: "#003831", secColor: "#EFB21E",}, 
+{name: "Philadelphia Phillies", primColor: "#E81828", secColor: "#002D72",}, 
+{name: "Pittsburgh Pirates", primColor: "#FDB827", secColor: "#27251F",}, 
+{name: "San Diego Padres", primColor: "#2F241D", secColor: "#FFC425",}, 
+{name: "San Francisco Giants", primColor: "#FD5A1E", secColor: "#27251F",}, 
+{name: "Seattle Mariners", primColor: "#0C2C56", secColor: "#005C5C",}, 
+{name: "St. Louis Cardinals", primColor: "#C41E3A", secColor: "#0C2340",},
+{name: "Tampa Bay Rays", primColor: "#092C5C", secColor: "#8FBCE6",}, 
+{name: "Texas Rangers", primColor: "#003278", secColor: "#C0111F",}, 
+{name: "Toronto Blue Jays", primColor: "#134A8E", secColor: "#1D2D5C",}, 
+{name: "Washington Nationals", primColor: "#AB0003", secColor: "#14225A"}];
 
 // alphabetical array of NBA Teams
-let nbaArray = [{name: "Atlanta Hawks", pcol:"#26282A", scol: "#E03A3E",}, 
-{name: "Boston Celtics", pcol:"#000000", scol: "#007A33",}, 
-{name: "Brooklyn Nets", pcol:"#000000", scol: "#FFFFFF",}, 
-{name: "Charlotte Hornets", pcol:"#1D1160", scol: "#00788C",}, 
-{name: "Chicago Bulls", pcol:"#000000", scol: "#CE1141",}, 
-{name: "Cleveland Cavaliers", pcol:"#6F263D", scol: "#FFB81C",}, 
-{name: "Dallas Mavericks", pcol:"#00538C", scol: "#B8C4CA",}, 
-{name: "Denver Nuggets", pcol:"#0E2240", scol: "#FEC524",}, 
-{name: "Detroit Pistons", pcol:"#1D42BA", scol: "#C8102E",},
-{name: "Golden State Warriors", pcol:"#1D428A", scol: "#FFC72C",},
-{name: "Houston Rockets", pcol:"#000000", scol: "#CE1141",}, 
-{name: "Indiana Pacers", pcol:"#002D62", scol: "#FDBB30",}, 
-{name: "Los Angeles Clippers", pcol:"#C8102E", scol: "#BEC0C2",}, 
-{name: "Los Angeles Lakers", pcol:"#552583", scol: "#FDB927",}, 
-{name: "Memphis Grizzlies", pcol:"#12173F", scol: "#5D76A9",}, 
-{name: "Miami Heat", pcol:"#98002E", scol: "#F9A01B",}, 
-{name: "Milwaukee Bucks", pcol:"#00471B", scol: "#EEE1C6",}, 
-{name: "Minnesota Timberwolves", pcol:"#0C2340", scol: "#9EA2A2",}, 
-{name: "New Orleans Pelicans", pcol:"#0C2340", scol: "#C8102E",}, 
-{name: "New York Knicks", pcol:"#006BB6", scol: "#F58426",}, 
-{name: "Oklahoma City Thunder", pcol:"#002D62", scol: "#EF3B24",}, 
-{name: "Orlando Magic", pcol:"#0077C0", scol: "#C4CED4",}, 
-{name: "Philadelphia 76ers", pcol:"#006BB6", scol: "#ED174C",}, 
-{name: "Phoenix Suns", pcol:"#1D1160", scol: "#E56020",}, 
-{name: "Portland Trail Blazers", pcol:"#000000", scol: "#E03A3E",}, 
-{name: "Sacramento Kings", pcol:"#5A2D81", scol: "#63727A",}, 
-{name: "San Antonio Spurs", pcol:"#000000", scol: "#C4CED4",}, 
-{name: "Toronto Raptors", pcol:"#000000", scol: "#CE1141",}, 
-{name: "Utah Jazz", pcol:"#002B5C", scol: "#F9A01B",}, 
-{name: "Washington Wizards", pcol:"#002B5C", scol: "#E31837"}];
+let nbaArray = [{name: "Atlanta Hawks", primColor:"#26282A", secColor: "#E03A3E",}, 
+{name: "Boston Celtics", primColor:"#000000", secColor: "#007A33",}, 
+{name: "Brooklyn Nets", primColor:"#000000", secColor: "#FFFFFF",}, 
+{name: "Charlotte Hornets", primColor:"#1D1160", secColor: "#00788C",}, 
+{name: "Chicago Bulls", primColor:"#000000", secColor: "#CE1141",}, 
+{name: "Cleveland Cavaliers", primColor:"#6F263D", secColor: "#FFB81C",}, 
+{name: "Dallas Mavericks", primColor:"#00538C", secColor: "#B8C4CA",}, 
+{name: "Denver Nuggets", primColor:"#0E2240", secColor: "#FEC524",}, 
+{name: "Detroit Pistons", primColor:"#1D42BA", secColor: "#C8102E",},
+{name: "Golden State Warriors", primColor:"#1D428A", secColor: "#FFC72C",},
+{name: "Houston Rockets", primColor:"#000000", secColor: "#CE1141",}, 
+{name: "Indiana Pacers", primColor:"#002D62", secColor: "#FDBB30",}, 
+{name: "Los Angeles Clippers", primColor:"#C8102E", secColor: "#BEC0C2",}, 
+{name: "Los Angeles Lakers", primColor:"#552583", secColor: "#FDB927",}, 
+{name: "Memphis Grizzlies", primColor:"#12173F", secColor: "#5D76A9",}, 
+{name: "Miami Heat", primColor:"#98002E", secColor: "#F9A01B",}, 
+{name: "Milwaukee Bucks", primColor:"#00471B", secColor: "#EEE1C6",}, 
+{name: "Minnesota Timberwolves", primColor:"#0C2340", secColor: "#9EA2A2",}, 
+{name: "New Orleans Pelicans", primColor:"#0C2340", secColor: "#C8102E",}, 
+{name: "New York Knicks", primColor:"#006BB6", secColor: "#F58426",}, 
+{name: "Oklahoma City Thunder", primColor:"#002D62", secColor: "#EF3B24",}, 
+{name: "Orlando Magic", primColor:"#0077C0", secColor: "#C4CED4",}, 
+{name: "Philadelphia 76ers", primColor:"#006BB6", secColor: "#ED174C",}, 
+{name: "Phoenix Suns", primColor:"#1D1160", secColor: "#E56020",}, 
+{name: "Portland Trail Blazers", primColor:"#000000", secColor: "#E03A3E",}, 
+{name: "Sacramento Kings", primColor:"#5A2D81", secColor: "#63727A",}, 
+{name: "San Antonio Spurs", primColor:"#000000", secColor: "#C4CED4",}, 
+{name: "Toronto Raptors", primColor:"#000000", secColor: "#CE1141",}, 
+{name: "Utah Jazz", primColor:"#002B5C", secColor: "#F9A01B",}, 
+{name: "Washington Wizards", primColor:"#002B5C", secColor: "#E31837"}];
 
 // alphabetical array of NFL Teams
-let nflArray = [{name: "Atlanta Falcons", pcol: "#A71930", scol: "#000000",}, 
-{name: "Arizona Cardinals", pcol: "#97233F", scol: "#000000",}, 
-{name: "Baltimore Ravens", pcol: "#241773", scol: "#000000",}, 
-{name: "Buffalo Bills", pcol: "#00338D", scol: "#C60C30",}, 
-{name: "Carolina Panthers", pcol: "#0085CA", scol: "#101820",}, 
-{name: "Chicago Bears", pcol: "#0B162A", scol: "#C83803",}, 
-{name: "Cincinnati Bengals", pcol: "#FB4F14", scol: "#000000",}, 
-{name: "Cleveland Browns", pcol: "#FF3C00", scol: "#311D00",}, 
-{name: "Dallas Cowboys", pcol: "#003594", scol: "#041E42",},
-{name: "Denver Broncos", pcol: "#FB4F14", scol: "#002244",}, 
-{name: "Detroit Lions", pcol: "#0076B6", scol: "#B0B7BC",}, 
-{name: "Green Bay Packers", pcol: "#203731", scol: "#FFB612",}, 
-{name: "Houston Texans", pcol: "#03202F", scol: "#A71930",}, 
-{name: "Indianapolis Colts", pcol: "#002C5F", scol: "#A2AAAD",}, 
-{name: "Jacksonville Jaguars", pcol: "#006778", scol: "#9F792C",}, 
-{name: "Kansas City Chiefs", pcol: "#E31837", scol: "#FFB81C",}, 
-{name: "Los Angeles Chargers", pcol: "#0080C6", scol: "#FFC20E",}, 
-{name: "Los Angeles Rams", pcol: "#002244", scol: "#866D4B",},
-{name: "Miami Dolphins", pcol: "#008E97", scol: "#FC4C02",}, 
-{name: "Minnesota Vikings", pcol: "#4F2683", scol: "#4F2683",}, 
-{name: "New England Patriots", pcol: "#002244", scol: "#C60C30",}, 
-{name: "New Orleans Saints", pcol: "#D3BC8D", scol: "#101820",}, 
-{name: "NY Giants", pcol: "#0B2265", scol: "#A71930",}, 
-{name: "NY Jets", pcol: "#125740", scol: "#000000",}, 
-{name: "Oakland Raiders", pcol: "#A5ACAF", scol: "#000000",}, 
-{name: "Philadelphia Eagles", pcol: "#004C54", scol: "#004C54",}, 
-{name: "Pittsburgh Steelers", pcol: "#FFB612", scol: "#101820",}, 
-{name: "San Francisco 49ers", pcol: "#AA0000", scol: "#B3995D",},
-{name: "Seattle Seahawks", pcol: "#002244", scol: "#69BE28",}, 
-{name: "Tampa Bay Buccaneers", pcol: "#D50A0A", scol: "#0A0A08",}, 
-{name: "Tennessee Titans", pcol: "#0C2340", scol: "#4B92DB",}, 
-{name: "Washington Redskins", pcol: "#773141", scol: "#FFB612"}];
+let nflArray = [{name: "Atlanta Falcons", primColor: "#A71930", secColor: "#000000",}, 
+{name: "Arizona Cardinals", primColor: "#97233F", secColor: "#000000",}, 
+{name: "Baltimore Ravens", primColor: "#241773", secColor: "#000000",}, 
+{name: "Buffalo Bills", primColor: "#00338D", secColor: "#C60C30",}, 
+{name: "Carolina Panthers", primColor: "#0085CA", secColor: "#101820",}, 
+{name: "Chicago Bears", primColor: "#0B162A", secColor: "#C83803",}, 
+{name: "Cincinnati Bengals", primColor: "#FB4F14", secColor: "#000000",}, 
+{name: "Cleveland Browns", primColor: "#FF3C00", secColor: "#311D00",}, 
+{name: "Dallas Cowboys", primColor: "#003594", secColor: "#041E42",},
+{name: "Denver Broncos", primColor: "#FB4F14", secColor: "#002244",}, 
+{name: "Detroit Lions", primColor: "#0076B6", secColor: "#B0B7BC",}, 
+{name: "Green Bay Packers", primColor: "#203731", secColor: "#FFB612",}, 
+{name: "Houston Texans", primColor: "#03202F", secColor: "#A71930",}, 
+{name: "Indianapolis Colts", primColor: "#002C5F", secColor: "#A2AAAD",}, 
+{name: "Jacksonville Jaguars", primColor: "#006778", secColor: "#9F792C",}, 
+{name: "Kansas City Chiefs", primColor: "#E31837", secColor: "#FFB81C",}, 
+{name: "Los Angeles Chargers", primColor: "#0080C6", secColor: "#FFC20E",}, 
+{name: "Los Angeles Rams", primColor: "#002244", secColor: "#866D4B",},
+{name: "Miami Dolphins", primColor: "#008E97", secColor: "#FC4C02",}, 
+{name: "Minnesota Vikings", primColor: "#4F2683", secColor: "#4F2683",}, 
+{name: "New England Patriots", primColor: "#002244", secColor: "#C60C30",}, 
+{name: "New Orleans Saints", primColor: "#D3BC8D", secColor: "#101820",}, 
+{name: "NY Giants", primColor: "#0B2265", secColor: "#A71930",}, 
+{name: "NY Jets", primColor: "#125740", secColor: "#000000",}, 
+{name: "Oakland Raiders", primColor: "#A5ACAF", secColor: "#000000",}, 
+{name: "Philadelphia Eagles", primColor: "#004C54", secColor: "#004C54",}, 
+{name: "Pittsburgh Steelers", primColor: "#FFB612", secColor: "#101820",}, 
+{name: "San Francisco 49ers", primColor: "#AA0000", secColor: "#B3995D",},
+{name: "Seattle Seahawks", primColor: "#002244", secColor: "#69BE28",}, 
+{name: "Tampa Bay Buccaneers", primColor: "#D50A0A", secColor: "#0A0A08",}, 
+{name: "Tennessee Titans", primColor: "#0C2340", secColor: "#4B92DB",}, 
+{name: "Washington Redskins", primColor: "#773141", secColor: "#FFB612"}];
 
 // alphabetical array of NHL Teams
-let nhlArray = [{name: "Anaheim Ducks", pcol: "#F47A38", scol: "#B9975B"}, 
-{name: "Arizona Coyotes", pcol: "#8C2633", scol: "#E2D6B5"}, 
-{name: "Boston Bruins", pcol: "#FFB81C", scol: "#000000"},  
-{name: "Buffalo Sabres", pcol: "#002654", scol: "#FCB514"}, 
-{name: "Calgary Flames", pcol: "#C8102E", scol: "#F1BE48"},  
-{name: "Carolina Hurricanes", pcol: "#CC0000", scol: "#000000"}, 
-{name: "Chicago Blackhawks", pcol: "#CF0A2C", scol: "#000000"},  
-{name: "Colorado Avalanche", pcol: "#6F263D", scol: "#236192"},  
-{name: "Columbus Blue Jackets", pcol: "#002654", scol: "#CE1126"},  
-{name: "Dallas Stars", pcol: "#006847", scol: "#8F8F8C"}, 
-{name: "Detroit Red Wings", pcol: "#CE1126", scol: "#FFFFFF"},  
-{name: "Edmonton Oilers", pcol: "#041E42", scol: "#FF4C00"}, 
-{name: "Florida Panthers", pcol: "#041E42", scol: "#C8102E"},  
-{name: "Los Angeles Kings", pcol: "#111111", scol: "#A2AAAD"}, 
-{name: "Minnesota Wild", pcol: "#154734", scol: "#A6192E"}, 
-{name: "Montreal Canadiens", pcol: "#AF1E2D", scol: "#192168"}, 
-{name: "Nashville Predators", pcol: "#FFB81C", scol: "#041E42"},  
-{name: "New Jersey Devils", pcol: "#CE1126", scol: "#000000"}, 
-{name: "New York Islanders", pcol: "#00539B", scol: "#F47D30"}, 
-{name: "New York Rangers", pcol:  "#0038A8", scol: "#CE1126"}, 
-{name: "Ottawa Senators", pcol: "#C52032", scol: "#C2912C"}, 
-{name: "Philadelphia Flyers", pcol: "#F74902", scol: "#000000"}, 
-{name: "Pittsburgh Penguins", pcol: "#FCB514", scol: "#000000"}, 
-{name: "San Jose Sharks", pcol: "#006D75", scol: "#EA7200"}, 
-{name: "St. Louis Blues", pcol: "#002F87", scol: "#FCB514"}, 
-{name: "Tampa Bay Lightning", pcol: "#002868", scol: "#FFFFFF"}, 
-{name: "Toronto Maple Leafs", pcol: "#00205B", scol: "#FFFFFF"}, 
-{name: "Vancouver Canucks", pcol: "#00205B", scol: "#00843D"}, 
-{name: "Vegas Golden Knights", pcol: "#B4975A", scol: "#333F42"}, 
-{name: "Washington Capitals", pcol: "#041E42", scol: "#C8102E"}, 
-{name: "Winnipeg Jets", pcol: "#041E42", scol: "#004C97"}];
+let nhlArray = [{name: "Anaheim Ducks", primColor: "#F47A38", secColor: "#B9975B"}, 
+{name: "Arizona Coyotes", primColor: "#8C2633", secColor: "#E2D6B5"}, 
+{name: "Boston Bruins", primColor: "#FFB81C", secColor: "#000000"},  
+{name: "Buffalo Sabres", primColor: "#002654", secColor: "#FCB514"}, 
+{name: "Calgary Flames", primColor: "#C8102E", secColor: "#F1BE48"},  
+{name: "Carolina Hurricanes", primColor: "#CC0000", secColor: "#000000"}, 
+{name: "Chicago Blackhawks", primColor: "#CF0A2C", secColor: "#000000"},  
+{name: "Colorado Avalanche", primColor: "#6F263D", secColor: "#236192"},  
+{name: "Columbus Blue Jackets", primColor: "#002654", secColor: "#CE1126"},  
+{name: "Dallas Stars", primColor: "#006847", secColor: "#8F8F8C"}, 
+{name: "Detroit Red Wings", primColor: "#CE1126", secColor: "#FFFFFF"},  
+{name: "Edmonton Oilers", primColor: "#041E42", secColor: "#FF4C00"}, 
+{name: "Florida Panthers", primColor: "#041E42", secColor: "#C8102E"},  
+{name: "Los Angeles Kings", primColor: "#111111", secColor: "#A2AAAD"}, 
+{name: "Minnesota Wild", primColor: "#154734", secColor: "#A6192E"}, 
+{name: "Montreal Canadiens", primColor: "#AF1E2D", secColor: "#192168"}, 
+{name: "Nashville Predators", primColor: "#FFB81C", secColor: "#041E42"},  
+{name: "New Jersey Devils", primColor: "#CE1126", secColor: "#000000"}, 
+{name: "New York Islanders", primColor: "#00539B", secColor: "#F47D30"}, 
+{name: "New York Rangers", primColor:  "#0038A8", secColor: "#CE1126"}, 
+{name: "Ottawa Senators", primColor: "#C52032", secColor: "#C2912C"}, 
+{name: "Philadelphia Flyers", primColor: "#F74902", secColor: "#000000"}, 
+{name: "Pittsburgh Penguins", primColor: "#FCB514", secColor: "#000000"}, 
+{name: "San Jose Sharks", primColor: "#006D75", secColor: "#EA7200"}, 
+{name: "St. Louis Blues", primColor: "#002F87", secColor: "#FCB514"}, 
+{name: "Tampa Bay Lightning", primColor: "#002868", secColor: "#FFFFFF"}, 
+{name: "Toronto Maple Leafs", primColor: "#00205B", secColor: "#FFFFFF"}, 
+{name: "Vancouver Canucks", primColor: "#00205B", secColor: "#00843D"}, 
+{name: "Vegas Golden Knights", primColor: "#B4975A", secColor: "#333F42"}, 
+{name: "Washington Capitals", primColor: "#041E42", secColor: "#C8102E"}, 
+{name: "Winnipeg Jets", primColor: "#041E42", secColor: "#004C97"}];
 
 // --------------------------------------------------------------------------------------
 // event listener for submit button to get user name.
@@ -409,8 +410,8 @@ function setBackgroundColorNBA(team) {
 
     for (j = 0; j < nbaArray.length; j++) {
 
-        var primaryColorNBA = PcolsNBA[j];
-        var secondaryColorNBA = ScolsNBA[j];
+        var primaryColorNBA = primColorsNBA[j];
+        var secondaryColorNBA = secColorsNBA[j];
 
         if (team === nbaArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorNBA + ';color:' + secondaryColorNBA + ';"');
@@ -428,8 +429,8 @@ function setBackgroundColorMLB(team) {
 
     for (j = 0; j < mlbArray.length; j++) {
 
-        var primaryColorMLB = PcolsMLB[j];
-        var secondaryColorMLB = ScolsMLB[j];
+        var primaryColorMLB = primColorsMLB[j];
+        var secondaryColorMLB = secColorsMLB[j];
 
         if (team === mlbArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
@@ -447,8 +448,8 @@ function setBackgroundColorNFL(team) {
 
     for (j = 0; j < nflArray.length; j++) {
 
-        var primaryColorNFL = PcolsNFL[j];
-        var secondaryColorNFL = ScolsNFL[j];
+        var primaryColorNFL = primColorsNFL[j];
+        var secondaryColorNFL = secColorsNFL[j];
 
         if (team === nflArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
@@ -466,8 +467,8 @@ function setBackgroundColorNFL(team) {
 
 //     for (j = 0; j < nhlArray.length; j++) {
 
-//         var primaryColorNHL = PcolsNHL[j];
-//         var secondaryColorNHL = ScolsNHL[j];
+//         var primaryColorNHL = primColorsNHL[j];
+//         var secondaryColorNHL = secColorsNHL[j];
 
 //         if (team === nhlArray[j]) {
 //             $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
@@ -486,7 +487,7 @@ function setBackgroundColor(team, array) {
     for (i = 0; i < array.length; i++) {
 
         if (team === array[i].name) {
-            $('#logo').attr('style', 'background:' + array[i].pcol + ';color:' + array[i].scol + ';"');
+            $('#logo').attr('style', 'background:' + array[i].primColor + ';color:' + array[i].secColor + ';"');
         }
     };
 };
