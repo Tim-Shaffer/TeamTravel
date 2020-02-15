@@ -140,7 +140,7 @@ $('#sub-button').on('click', function(event) {
     
     // get the user from the input and store it in a variable.
     var userName = $('#name').val().trim();
-    console.log(userName);
+    // console.log(userName);
     
     // add the user to session storage.
     sessionStorage.setItem("username", userName);
@@ -154,9 +154,6 @@ $('#sub-button').on('click', function(event) {
     // update the name into the display
     $("#user-name-disp").text(userName + " ");
     $("#name-event-disp").text(userName + " ");
-
-    // for testing
-    getEvent();
 
 });
 // --------------------------------------------------------------------------------------
@@ -172,7 +169,7 @@ $('input:radio').on('click', function() {
     
     // gather the name of the league from the value attribute of the button
     var league = this.value;  // need to make sure that there is a value attribute on the radio buttons ****
-    console.log(league); 
+    // console.log(league); 
 
     // add the league to session storage
     sessionStorage.setItem("league", league);
@@ -244,13 +241,13 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 
 $('body').on('click', ".dropdown-item:button", function () {
-    console.log("Event Trigerred");
+    // console.log("Event Trigerred");
     var tag = $(this);
     var teamName = tag.val();
     var index = parseInt(tag.attr("data-idx"));    
 
-    console.log("Selected Value: " + teamName);
-    console.log("Index:  " + index);
+    // console.log("Selected Value: " + teamName);
+    // console.log("Index:  " + index);
 
     // add the index to session storage
     sessionStorage.setItem("index", index);
@@ -296,7 +293,7 @@ $('body').on('click', ".dropdown-item:button", function () {
 //  teamName - the value from the user selection of the dropdown list
 // --------------------------------------------------------------------------------------
 function getSchedule(league, teamName) {
-    console.log("Ready to make the API call to get the selected schedule");
+    // console.log("Ready to make the API call to get the selected schedule");
     // set the API key for the app
     var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
@@ -334,7 +331,7 @@ function getSchedule(league, teamName) {
             "Authorization": apiKey
         },
     }).then(function(response) {
-        console.log(response);
+        // console.log(response);
 
         // bulid schedule table based on json returned
         buildGameSchedule(response);
@@ -359,7 +356,7 @@ function getNFLSchedule(apiKey) {
             "Authorization": apiKey
         },
     }).then(function(response) {
-        console.log(response);
+        // console.log(response);
     });
 
 };
@@ -399,7 +396,7 @@ function buildGameSchedule(apiResponse) {
     for (i=0; i < games.length; i++) {
 
         // Create the new row of games to display
-        newRow = $("<tr>").append(
+        newRow = $("<tr class='clickable-row'>").append(
                 $("<td>").text(games[i].date + "/" + games[i].time),
                 $("<td>").text(games[i].awayTeam.City + " " + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
         );
@@ -412,8 +409,8 @@ function buildGameSchedule(apiResponse) {
         $("#sched-table > tbody").append(newRow);
 
         // log it for testing until there is a table to append to
-        console.log("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
-                    + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name);
+        // console.log("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
+        //             + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name);
 
     };
 
@@ -455,9 +452,9 @@ function setBackgroundColor(team, array) {
 function getEvent(date, location) {
     //  var startDate = moment(date).add(-3, 'days').format().substring(0,19);
     var startDate = moment('02/15/2020').add(-3, 'days').format().substring(0,19);
-    console.log(startDate);
+    // console.log(startDate);
     var endDate = moment(startDate).add(7, 'days').format().substring(0,19);
-    console.log(endDate);
+    // console.log(endDate);
     // 
     var loc = 'Philadelphia'
     var state = 'PA'
@@ -465,7 +462,7 @@ function getEvent(date, location) {
         url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + loc + "&stateCode=" + state + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,desc",
         method: "GET"
     }).then(function(response) {
-        console.log(response);
+        // console.log(response);
         buildEventList(response);
     });
  };
@@ -490,7 +487,7 @@ function buildEventList(apiResponse) {
         // Create the new row of games to display
         displayDateTime = events[i].dates.start.dateTime.substring(0,10);
         displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
-        console.log(displayDateTime);
+        // console.log(displayDateTime);
         newRow = $("<tr>").append(
                 $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
                 $("<td>").text(events[i].name),
@@ -501,10 +498,10 @@ function buildEventList(apiResponse) {
         // Append the new row to the table
         $("#event-table > tbody").append(newRow);
         // log it for testing until there is a table to append to
-        console.log(events[i].dates.start.dateTime + "/" + events[i].dates.start.localTime);
-        console.log(events[i].name);
+        // console.log(events[i].dates.start.dateTime + "/" + events[i].dates.start.localTime);
+        // console.log(events[i].name);
     };
-    $('#event-list-display').show();
+    
 };
 // --------------------------------------------------------------------------------------
 // end of buildEventList() function
@@ -513,47 +510,22 @@ function buildEventList(apiResponse) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of a game
 // --------------------------------------------------------------------------------------
-$('body').on('click', ".dropdown-item:button", function () {
-    console.log("Event Trigerred");
+$('body').on('click', ".clickable-row", function () {  // tried sched-display, sched-table
+    
+    console.log("Event Trigerred to get Events");
+
+    console.log(this);
     var tag = $(this);
-    var teamName = tag.val();
-    var index = parseInt(tag.attr("data-idx"));    
+    var gameDate = tag.attr("date");
+    console.log(gameDate); 
 
-    console.log("Selected Value: " + teamName);
-    console.log("Index:  " + index);
 
-    // add the index to session storage
-    sessionStorage.setItem("index", index);
-
-    // get the league back from session storage 
-    var league = sessionStorage.getItem("league");
-
-    // update the Header with the team selected
-    $("#teamNameEntry").text(teamName);
-
-    // update team name in schedule table
-    $("#team-display").text(teamName);
-
-    // coordinate the colors for the selected team
-    if (league.toUpperCase() === "MLB") {
-        // setBackgroundColorMLB(teamName);
-        setBackgroundColor(teamName, mlbArray);
-    } else if (league.toUpperCase() === "NBA") {
-        // setBackgroundColorNBA(teamName);
-        setBackgroundColor(teamName, nbaArray);
-    } else if (league.toUpperCase() === "NFL") {
-        // setBackgroundColorNFL(teamName);
-        setBackgroundColor(teamName, nflArray);
-    } else if (league.toUpperCase() === "NHL") {
-        // setBackgroundColorNHL(teamName);
-        setBackgroundColor(teamName, nhlArray);
-    }; 
 
     // call the API 
-    getSchedule(league.toUpperCase(), teamName);
+    getEvent();
 
-    // show the schedule section
-    $("schedule-display").show();
+    // show the event section
+    $('#event-list-display').show();
 
 });
 // --------------------------------------------------------------------------------------
