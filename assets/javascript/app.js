@@ -143,7 +143,9 @@ $('#sub-button').on('click', function(event) {
     // console.log(userName);
 
     // capitalize the user entry
-    userName  = capital_letter(userName );
+    if (userName) {
+        userName  = capital_letter(userName );
+    };
     
     // add the user to session storage.
     sessionStorage.setItem("username", userName);
@@ -436,7 +438,7 @@ function setBackgroundColor(team, array) {
 
     $('.modal-body').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
     $('.modal-header').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
-    // $('.names').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $("#modal-body").attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
 
 };
 // --------------------------------------------------------------------------------------
@@ -513,7 +515,7 @@ function buildEventList(apiResponse) {
                     $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
                     $("<td>").text(events[i].name),
             );
-            
+
         };
         
         // Append the new row to the table
