@@ -1,27 +1,149 @@
 // Global variables for league arrays of teams
 // alphabetical array of MLB Teams
-let mlbArray = ["Arizona Diamondbacks", "Atlanta Braves", "Baltimore Orioles", "Boston Red Sox", "Chicago Cubs", "Chicago White Sox", "Cincinnati Reds", "Cleveland Indians",
-"Colorado Rockies", "Detroit Tigers", "Houston Astros", "Kansas City Royals", "Los Angeles Angels", "Los Angeles Dodgers", "Miami Marlins", "Milwaukee Brewers", "Minnesota Twins",
-"New York Mets", "New York Yankees", "Oakland Athletics", "Philadelphia Phillies", "Pittsburgh Pirates", "San Diego Padres", "San Francisco Giants", "Seattle Mariners", "St. Louis Cardinals",
-"Tampa Bay Rays", "Texas Rangers", "Toronto Blue Jays", "Washington Nationals"];
+let mlbArray = [{name: "Arizona Diamondbacks"}, 
+{name: "Atlanta Braves"}, 
+{name: "Baltimore Orioles"}, 
+{name: "Boston Red Sox"}, 
+{name: "Chicago Cubs"}, 
+{name: "Chicago White Sox"}, 
+{name: "Cincinnati Reds"}, 
+{name: "Cleveland Indians"},
+{name: "Colorado Rockies"}, 
+{name: "Detroit Tigers"}, 
+{name: "Houston Astros"}, 
+{name: "Kansas City Royals"}, 
+{name: "Los Angeles Angels"}, 
+{name: "Los Angeles Dodgers"}, 
+{name: "Miami Marlins"}, 
+{name: "Milwaukee Brewers"}, 
+{name: "Minnesota Twins"},
+{name: "New York Mets"}, 
+{name: "New York Yankees"}, 
+{name: "Oakland Athletics"}, 
+{name: "Philadelphia Phillies"}, 
+{name: "Pittsburgh Pirates"}, 
+{name: "San Diego Padres"}, 
+{name: "San Francisco Giants"}, 
+{name: "Seattle Mariners"}, 
+{name: "St. Louis Cardinals"},
+{name: "Tampa Bay Rays"}, 
+{name: "Texas Rangers"}, 
+{name: "Toronto Blue Jays"}, 
+{name: "Washington Nationals"}];
 
 // alphabetical array of NBA Teams
-let nbaArray = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons",
-"Golden State Warriors", "Houston Rockets", "Indiana Pacers", "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", 
-"New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", 
-"Toronto Raptors", "Utah Jazz", "Washington Wizards"];
+let nbaArray = [{name: "Atlanta Hawks"}, 
+{name: "Boston Celtics"}, 
+{name: "Brooklyn Nets"}, 
+{name: "Charlotte Hornets"}, 
+{name: "Chicago Bulls"}, 
+{name: "Cleveland Cavaliers"}, 
+{name: "Dallas Mavericks"}, 
+{name: "Denver Nuggets"}, 
+{name: "Detroit Pistons"},
+{name: "Golden State Warriors"}, 
+{name: "Houston Rockets"}, 
+{name: "Indiana Pacers"}, 
+{name: "Los Angeles Clippers"}, 
+{name: "Los Angeles Lakers"}, 
+{name: "Memphis Grizzlies"}, 
+{name: "Miami Heat"}, 
+{name: "Milwaukee Bucks"}, 
+{name: "Minnesota Timberwolves"}, 
+{name: "New Orleans Pelicans"}, 
+{name: "New York Knicks"}, 
+{name: "Oklahoma City Thunder"}, 
+{name: "Orlando Magic"}, 
+{name: "Philadelphia 76ers"}, 
+{name: "Phoenix Suns"}, 
+{name: "Portland Trail Blazers"}, 
+{name: "Sacramento Kings"}, 
+{name: "San Antonio Spurs"}, 
+{name: "Toronto Raptors"}, 
+{name: "Utah Jazz"}, 
+{name: "Washington Wizards"}];
 
 // alphabetical array of NFL Teams
-let nflArray = ["Atlanta Falcons", "Arizona Cardinals", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys",
-"Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Los Angeles Chargers", "Los Angeles Rams",
-"Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "NY Giants", "NY Jets", "Oakland Raiders", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers",
-"Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Redskins"];
+let nflArray = [{name: "Atlanta Falcons"}, 
+{name: "Arizona Cardinals"}, 
+{name: "Baltimore Ravens"}, 
+{name: "Buffalo Bills"}, 
+{name: "Carolina Panthers"}, 
+{name: "Chicago Bears"}, 
+{name: "Cincinnati Bengals"}, 
+{name: "Cleveland Browns"}, 
+{name: "Dallas Cowboys"},
+{name: "Denver Broncos"}, 
+{name: "Detroit Lions"}, 
+{name: "Green Bay Packers"}, 
+{name: "Houston Texans"}, 
+{name: "Indianapolis Colts"}, 
+{name: "Jacksonville Jaguars"}, 
+{name: "Kansas City Chiefs"}, 
+{name: "Los Angeles Chargers"}, 
+{name: "Los Angeles Rams"},
+{name: "Miami Dolphins"}, 
+{name: "Minnesota Vikings"}, 
+{name: "New England Patriots"}, 
+{name: "New Orleans Saints"}, 
+{name: "NY Giants"}, 
+{name: "NY Jets"}, 
+{name: "Oakland Raiders"}, 
+{name: "Philadelphia Eagles"}, 
+{name: "Pittsburgh Steelers"}, 
+{name: "San Francisco 49ers"},
+{name: "Seattle Seahawks"}, 
+{name: "Tampa Bay Buccaneers"}, 
+{name: "Tennessee Titans"}, 
+{name: "Washington Redskins"}];
 
 // alphabetical array of NHL Teams
-let nhlArray = ["Anaheim Ducks", "Arizona Coyotes", "Boston Bruins", "Buffalo Sabres", "Calgary Flames", "Carolina Hurricanes", "Chicago Blackhawks", "Colorado Avalanche", "Columbus Blue Jackets", 
-"Dallas Stars", "Detroit Red Wings", "Edmonton Oilers", "Florida Panthers",  "Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", 
-"New York Islanders", "New York Rangers", "Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks", "St. Louis Blues", "Tampa Bay Lightning", 
-"Toronto Maple Leafs", "Vancouver Canucks", "Vegas Golden Knights", "Washington Capitals", "Winnipeg Jets"];
+// let nhlArray = ["Anaheim Ducks", "Arizona Coyotes", "Boston Bruins", "Buffalo Sabres", "Calgary Flames", "Carolina Hurricanes", "Chicago Blackhawks", "Colorado Avalanche", "Columbus Blue Jackets", 
+// "Dallas Stars", "Detroit Red Wings", "Edmonton Oilers", "Florida Panthers",  "Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", 
+// "New York Islanders", "New York Rangers", "Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks", "St. Louis Blues", "Tampa Bay Lightning", 
+// "Toronto Maple Leafs", "Vancouver Canucks", "Vegas Golden Knights", "Washington Capitals", "Winnipeg Jets"];
+
+// let PcolsNHL = ["#F47A38", "#8C2633", "#FFB81C", "#002654", "#C8102E", "#CC0000", "#CF0A2C", "#6F263D", "#002654",
+//     "#006847", "#CE1126", "#041E42", "#041E42", "#111111", "#154734", "#AF1E2D", "#FFB81C", "#CE1126",
+//     "#00539B", "#0038A8", "#C52032", "#F74902", "#FCB514", "#006D75", "#002F87", "#002868",
+//     "#00205B", "#00205B", "#B4975A", "041E42", "#041E42"];
+
+// let ScolsNHL = ["#B9975B", "#E2D6B5", "#000000", "#FCB514", "#F1BE48", "#000000", "#000000", "#236192", "#CE1126",
+//     "#8F8F8C", "#FFFFFF", "#FF4C00", "#C8102E", "#A2AAAD", "#A6192E", "#192168", "#041E42", "#000000",
+//     "#F47D30", "#CE1126", "#C2912C", "#000000", "#000000", "#EA7200", "#FCB514", "#FFFFFF",
+//     "#FFFFFF", "#00843D", "#333F42", "#C8102E", "#004C97"];
+
+let nhlArray = [{name: "Anaheim Ducks", pcol: "#F47A38", scol: "#B9975B"}, 
+{name: "Arizona Coyotes", pcol: "#8C2633", scol: "#B9975B"}, 
+{name: "Boston Bruins", pcol: "#FFB81C", scol: "#B9975B"},  
+{name: "Buffalo Sabres", pcol: "#002654", scol: "#B9975B"}, 
+{name: "Calgary Flames", pcol: "#C8102E", scol: "#B9975B"},  
+{name: "Carolina Hurricanes", pcol: "#CC0000", scol: "#B9975B"}, 
+{name: "Chicago Blackhawks", pcol: "#CF0A2C", scol: "#B9975B"},  
+{name: "Colorado Avalanche", pcol: "#6F263D", scol: "#B9975B"},  
+{name: "Columbus Blue Jackets", pcol: "#002654", scol: "#B9975B"},  
+{name: "Dallas Stars", pcol: "#006847", scol: "#B9975B"}, 
+{name: "Detroit Red Wings", pcol: "#CE1126", scol: "#B9975B"},  
+{name: "Edmonton Oilers", pcol: "#041E42", scol: "#B9975B"}, 
+{name: "Florida Panthers", pcol: "#041E42", scol: "#B9975B"},  
+{name: "Los Angeles Kings", pcol: "#111111", scol: "#B9975B"}, 
+{name: "Minnesota Wild", pcol: "#154734", scol: "#B9975B"}, 
+{name: "Montreal Canadiens", pcol: "#AF1E2D", scol: "#B9975B"}, 
+{name: "Nashville Predators", pcol: "#FFB81C", scol: "#B9975B"},  
+{name: "New Jersey Devils", pcol: "#CE1126", scol: "#B9975B"}, 
+{name: "New York Islanders", pcol: "#00539B", scol: "#B9975B"}, 
+{name: "New York Rangers", pcol:  "#0038A8", scol: "#B9975B"}, 
+{name: "Ottawa Senators", pcol: "#C52032", scol: "#B9975B"}, 
+{name: "Philadelphia Flyers", pcol: "#F74902", scol: "#B9975B"}, 
+{name: "Pittsburgh Penguins", pcol: "#FCB514", scol: "#B9975B"}, 
+{name: "San Jose Sharks", pcol: "#006D75", scol: "#B9975B"}, 
+{name: "St. Louis Blues", pcol: "#002F87", scol: "#B9975B"}, 
+{name: "Tampa Bay Lightning", pcol: "#002868", scol: "#B9975B"}, 
+{name: "Toronto Maple Leafs", pcol: "#00205B", scol: "#B9975B"}, 
+{name: "Vancouver Canucks", pcol: "#00205B", scol: "#B9975B"}, 
+{name: "Vegas Golden Knights", pcol: "#B4975A", scol: "#B9975B"}, 
+{name: "Washington Capitals", pcol: "#041E42", scol: "#B9975B"}, 
+{name: "Winnipeg Jets", pcol: "#041E42", scol: "#B9975B"}];
 
 let PcolsNBA = ["#26282A","#000000","#000000","#1D1160","#000000","#6F263D","#00538C","#0E2240","#1D42BA","#1D428A",
 "#000000","#002D62","#C8102E","#552583","#12173F","#98002E",
@@ -48,11 +170,7 @@ let ScolsMLB = ["#A71930", "#13274F", "#27251F", "#0C2340", "#CC3433", "#27251F"
 
 
 
-let PcolsNHL = ["#F47A38", "#8C2633", "#FFB81C", "#002654", "#C8102E", "#CC0000", "#CF0A2C", "#6F263D", "#002654",
-    "#006847", "#CE1126", "#041E42", "#041E42", "#111111", "#154734", "#AF1E2D", "#FFB81C", "#CE1126",
-    "#00539B", "#0038A8", "#C52032", "#F74902", "#FCB514", "#006D75", "#002F87", "#002868",
-    "#00205B", "#00205B", "#B4975A", "041E42", "#041E42"
-];
+
 
 let ScolsNHL = ["#B9975B", "#E2D6B5", "#000000", "#FCB514", "#F1BE48", "#000000", "#000000", "#236192", "#CE1126",
     "#8F8F8C", "#FFFFFF", "#FF4C00", "#C8102E", "#A2AAAD", "#A6192E", "#192168", "#041E42", "#000000",
@@ -87,9 +205,11 @@ $('#sub-button').on('click', function(event) {
     // add the user to local storage.
     localStorage.setItem("username", userName);
 
-    // **** change submit button id
-    // **** Add to remove entry after the button clicked 
+    // clear the name value
     $("#name").val('');
+
+    // show the schedule display section
+    $("#schedule-display").show();
 
 });
 // --------------------------------------------------------------------------------------
@@ -151,7 +271,8 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
-            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
+            // $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
+            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i].name +'">'+ array[i].name +'</button>');
         };  
         
         return true;
@@ -195,11 +316,15 @@ $('body').on('click', ".dropdown-item:button", function () {
     } else if (league.toUpperCase() === "NFL") {
         setBackgroundColorNFL(teamName);
     } else if (league.toUpperCase() === "NHL") {
-        setBackgroundColorNHL(teamName);
+        // setBackgroundColorNHL(teamName);
+        setBackgroundColor(teamName, nhlArray);
     }; 
 
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
+
+    // show the schedule section
+    $("schedule-display").show();
 
 });
 // --------------------------------------------------------------------------------------
@@ -308,6 +433,9 @@ function buildGameSchedule(apiResponse) {
         games.push(apiResponse.fullgameschedule.gameentry[i]);
     };
 
+    // clear the table before reloading it with a new schedule.
+    $("#dropdown-list").empty();
+
     // iterate over games and build a row for each game
     for (i=0; i < games.length; i++) {
 
@@ -392,18 +520,34 @@ function setBackgroundColorNFL(team) {
 // end of setBackgroundColorNFL() function
 // --------------------------------------------------------------------------------------
 
+// // --------------------------------------------------------------------------------------
+// // function for coloring of sections based on an NHL team
+// // --------------------------------------------------------------------------------------
+// function setBackgroundColorNHL(team) {
+
+//     for (j = 0; j < nhlArray.length; j++) {
+
+//         var primaryColorNHL = PcolsNHL[j];
+//         var secondaryColorNHL = ScolsNHL[j];
+
+//         if (team === nhlArray[j]) {
+//             $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+//         }
+//     };
+// };
+// // --------------------------------------------------------------------------------------
+// // end of setBackgroundColorNHL() function
+// // --------------------------------------------------------------------------------------
+
 // --------------------------------------------------------------------------------------
 // function for coloring of sections based on an NHL team
 // --------------------------------------------------------------------------------------
-function setBackgroundColorNHL(team) {
+function setBackgroundColor(team, array) {
 
-    for (j = 0; j < nhlArray.length; j++) {
+    for (i = 0; i < array.length; i++) {
 
-        var primaryColorNHL = PcolsNHL[j];
-        var secondaryColorNHL = ScolsNHL[j];
-
-        if (team === nhlArray[j]) {
-            $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+        if (team === array[i].name) {
+            $('#logo').attr('style', 'background:' + array[i].pcol + ';color:' + array[i].scol + ';"');
         }
     };
 };
