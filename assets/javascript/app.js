@@ -153,12 +153,19 @@ $('#sub-button').on('click', function(event) {
     // clear the name value
     $("#name").val('');
 
-    // show the schedule display section
-    $("#schedule-display").show();
+    // make sure a team and user were entered before clearing the modal
+    var league = sessionStorage.getItem("league");
+    if (userName && league) {
+        $('#selectLeagueAndTeam').modal('hide');
 
-    // update the name into the display
-    $("#user-name-disp").text(userName + " ");
-    $("#name-event-disp").text(userName + " ");
+        // show the schedule display section
+        $("#schedule-display").show();
+
+        // update the name into the display
+        $("#user-name-disp").text(userName + " ");
+        $("#name-event-disp").text(userName + " ");
+        
+    };
 
 });
 // --------------------------------------------------------------------------------------
@@ -182,7 +189,7 @@ $('input:radio').on('click', function() {
     // function call to load the list of teams
     loadTeamSelectList(league);
 
-    // 
+    // format the modal 
     $("#dropdownMenuButton").show().css("inline-block");
     $(".team-selection").show().css("inline-block");
     $("#enterName").show().css("inline-block");
@@ -373,7 +380,7 @@ function getNFLSchedule(apiKey) {
 // Show modal when the page is ready. 
 // --------------------------------------------------------------------------------------
 $(document).ready(function () {
-    $("#selectLeagureAndTeam").modal("show");
+    $("#selectLeagueAndTeam").modal("show");
 }); 
 // --------------------------------------------------------------------------------------
 //  end of document ready action
