@@ -151,6 +151,13 @@ $('#sub-button').on('click', function(event) {
     // show the schedule display section
     $("#schedule-display").show();
 
+    // update the name into the display
+    $("#user-name-disp").text(userName + " ");
+    $("#name-event-disp").text(userName + " ");
+
+    // for testing
+    getEvent();
+
 });
 // --------------------------------------------------------------------------------------
 
@@ -427,7 +434,7 @@ function setBackgroundColor(team, array) {
     var idx = sessionStorage.getItem("index");
 
     $('#logo').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
-    $('#schedule-display').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    // $('#schedule-display').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
     $("#modalHeading").attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
 
     $('.modal-body').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
@@ -439,11 +446,115 @@ function setBackgroundColor(team, array) {
 // end of setBackgroundColor() function
 // --------------------------------------------------------------------------------------
 
-function getEvent() {
+// --------------------------------------------------------------------------------------
+//  Ajax call to API - TicketMaster
+//  Parameter values:
+//  date - 
+//  location -
+// --------------------------------------------------------------------------------------
+function getEvent(date, location) {
+    //  var startDate = moment(date).add(-3, 'days').format().substring(0,19);
+    var startDate = moment('02/15/2020').add(-3, 'days').format().substring(0,19);
+    console.log(startDate);
+    var endDate = moment(startDate).add(7, 'days').format().substring(0,19);
+    console.log(endDate);
+    // 
+    var loc = 'Philadelphia'
+    var state = 'PA'
     $.ajax({
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=Philadelphia&stateCode=PA&startDateTime=2020-02-15T01:00:00Z",
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + loc + "&stateCode=" + state + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,desc",
         method: "GET"
     }).then(function(response) {
         console.log(response);
+        buildEventList(response);
     });
  };
+ // --------------------------------------------------------------------------------------
+// end of getEvent() function
+// --------------------------------------------------------------------------------------
+
+ // --------------------------------------------------------------------------------------
+//  function to populate the event list display section upon successful return from the API
+// --------------------------------------------------------------------------------------
+function buildEventList(apiResponse) {
+    // local variable to hold the array of games
+    let events = [];
+    // session variable for the table row tag
+    var newRow;
+    for (i=0; i < apiResponse._embedded.events.length; i++) {
+        events.push(apiResponse._embedded.events[i]);
+    };
+    var displayDateTime;
+    // iterate over events and build a row for each event
+    for (i=0; i < events.length; i++) {
+        // Create the new row of games to display
+        displayDateTime = events[i].dates.start.dateTime.substring(0,10);
+        displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
+        console.log(displayDateTime);
+        newRow = $("<tr>").append(
+                $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
+                $("<td>").text(events[i].name),
+        );
+        // use the event-row class to define the click event listener to trigger the other API call.
+        newRow.addClass("event-row");  
+        
+        // Append the new row to the table
+        $("#event-table > tbody").append(newRow);
+        // log it for testing until there is a table to append to
+        console.log(events[i].dates.start.dateTime + "/" + events[i].dates.start.localTime);
+        console.log(events[i].name);
+    };
+    $('#event-list-display').show();
+};
+// --------------------------------------------------------------------------------------
+// end of buildEventList() function
+// -------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// event listener that gets triggerred on click of a game
+// --------------------------------------------------------------------------------------
+$('body').on('click', ".dropdown-item:button", function () {
+    console.log("Event Trigerred");
+    var tag = $(this);
+    var teamName = tag.val();
+    var index = parseInt(tag.attr("data-idx"));    
+
+    console.log("Selected Value: " + teamName);
+    console.log("Index:  " + index);
+
+    // add the index to session storage
+    sessionStorage.setItem("index", index);
+
+    // get the league back from session storage 
+    var league = sessionStorage.getItem("league");
+
+    // update the Header with the team selected
+    $("#teamNameEntry").text(teamName);
+
+    // update team name in schedule table
+    $("#team-display").text(teamName);
+
+    // coordinate the colors for the selected team
+    if (league.toUpperCase() === "MLB") {
+        // setBackgroundColorMLB(teamName);
+        setBackgroundColor(teamName, mlbArray);
+    } else if (league.toUpperCase() === "NBA") {
+        // setBackgroundColorNBA(teamName);
+        setBackgroundColor(teamName, nbaArray);
+    } else if (league.toUpperCase() === "NFL") {
+        // setBackgroundColorNFL(teamName);
+        setBackgroundColor(teamName, nflArray);
+    } else if (league.toUpperCase() === "NHL") {
+        // setBackgroundColorNHL(teamName);
+        setBackgroundColor(teamName, nhlArray);
+    }; 
+
+    // call the API 
+    getSchedule(league.toUpperCase(), teamName);
+
+    // show the schedule section
+    $("schedule-display").show();
+
+});
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
