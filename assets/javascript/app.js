@@ -49,7 +49,7 @@ let PcolsNFL = ["#A71930", "#97233F", "#241773", "#00338D", "#0085CA", "#0B162A"
 
 let ScolsNFL = ["#000000", "#000000", "#000000", "#C60C30", "#101820", "#C83803", "#000000", "#311D00", "#041E42",
     "#002244", "#B0B7BC", "#FFB612", "#A71930", "#A2AAAD", "#9F792C", "#FFB81C", "#FFC20E", "#866D4B",
-    "#FC4C02", "#4F2683", "#C60C30", "#101820", "#A71930", "#000000", "#000000", "#004C54", "#101820", "#B3995D",
+    "#FC4C02", "#4F2683", "#C60C30", "#101820", "#A71930", "#000000", "#000000", "#A5ACAF", "#101820", "#B3995D",
     "#69BE28", "#0A0A08", "#4B92DB", "#FFB612"
 ]; 
 
@@ -364,6 +364,14 @@ function setBackgroundColorNBA(team) {
 
         if (team === nbaArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorNBA + ';color:' + secondaryColorNBA + ';"');
+
+
+            $('.card-body').attr('style', 'background:' + primaryColorNBA +';color:' + secondaryColorNBA + ';"');
+
+            $('div.modal-header').attr('style', 'background:' + primaryColorNBA + ';color:' + secondaryColorNBA + ';"');
+
+            $('.names').attr('style', 'background:' + primaryColorNBA + ';color:' + secondaryColorNBA + ';"');
+
         }
     };
 };
@@ -377,6 +385,13 @@ function setBackgroundColorMLB(team) {
 
         if (team === mlbArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
+
+            $('.card-body').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
+
+            $('div.modal-header').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
+
+            $('.names').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
+
         }
     };
 };
@@ -389,7 +404,14 @@ function setBackgroundColorNFL(team) {
         var secondaryColorNFL = ScolsNFL[j];
 
         if (team === nflArray[j]) {
-            $('#logo').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
+            $('#logo').attr('style', 'background:' + primaryColorNFL+ ';color:' + secondaryColorNFL + ';"');
+
+            $('.card-body').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
+
+            $('div.modal-header').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
+
+            $('.names').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
+
         }
     };
 };
@@ -403,8 +425,14 @@ function setBackgroundColorNHL(team) {
 
         if (team === nhlArray[j]) {
             $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
-        }
-        $("#modalHeading").attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+        
+            $('.card-body').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+
+            $('div.modal-header').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+
+            $('.names').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
+
+       
 
 
 
@@ -412,4 +440,4 @@ function setBackgroundColorNHL(team) {
     };
 };
 
-
+};
