@@ -448,8 +448,8 @@ function setBackgroundColor(team, array) {
 // --------------------------------------------------------------------------------------
 function getEvent(date, location) {
 
-    //  local variable to hold the start date for the search call (made it the day after the game)
-    var startDate = moment(date).add(1, 'days').format().substring(0,19);
+    //  local variable to hold the start date for the search call (made it the day before the game)
+    var startDate = moment(date).add(-1, 'days').format().substring(0,19);
 
     // local variable to hold the end date for the search call (made it 3 days after)
     var endDate = moment(date).add(3, 'days').format().substring(0,19);
