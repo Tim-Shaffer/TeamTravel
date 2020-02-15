@@ -250,11 +250,14 @@ $('body').on('click', ".dropdown-item:button", function () {
 
     // coordinate the colors for the selected team
     if (league.toUpperCase() === "MLB") {
-        setBackgroundColorMLB(teamName);
+        // setBackgroundColorMLB(teamName);
+        setBackgroundColor(teamName, mlbArray);
     } else if (league.toUpperCase() === "NBA") {
-        setBackgroundColorNBA(teamName);
+        // setBackgroundColorNBA(teamName);
+        setBackgroundColor(teamName, nbaArray);
     } else if (league.toUpperCase() === "NFL") {
-        setBackgroundColorNFL(teamName);
+        // setBackgroundColorNFL(teamName);
+        setBackgroundColor(teamName, nflArray);
     } else if (league.toUpperCase() === "NHL") {
         // setBackgroundColorNHL(teamName);
         setBackgroundColor(teamName, nhlArray);
