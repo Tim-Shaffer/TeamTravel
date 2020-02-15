@@ -44,7 +44,7 @@
     <!-- HTML for modal  -->
 
     <div id="selectLeagureAndTeam" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg" style="height: inherit; width: inherit; margin-top:100px;" role="content">
+        <div id="changeSize" class="modal-dialog modal-lg" class="changeToModal" style="margin-top:100px; width:300px;" role="content">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header" style="background: gray">
@@ -62,7 +62,11 @@
 
 
                             <div class="row">
-                                <div class="col-lg-4" 
+                                
+                                <div id="bootstrapClass" class="col-lg-12" 
+
+                                
+
                                 style="text-align: center;">
                                     <fieldset data-role="controlgroup" data-type="horizontal">
                                         <legend >Select A League:</legend>
@@ -90,7 +94,7 @@
 
                                     <!-- New HTML for dropdown -->
 
-                                    <div class="dropdown" id="team-dropdown" style="margin-bottom: 120px;left:-20px;">
+                                    <div class="dropdown" id="team-dropdown" style="margin-bottom: 120px;left:-30px;">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
@@ -127,7 +131,7 @@
                                    
                                     <div class="d-flex justify-content-center">
                                     
-                                    <label class="names" for="Name" style= "margin-top:30px;">Name:</label>
+                                    <label class="names" for="Name" style= "margin-top:30px;margin-right:5px">Name: </label>
                                     <input style="width:140px; position: align-self-center; margin-top:30px;" id="name" type="text"
                                         class="form-control" name="fullname"><br>
 
