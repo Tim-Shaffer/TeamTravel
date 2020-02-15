@@ -239,7 +239,6 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
-
 $('body').on('click', ".dropdown-item:button", function () {
     // console.log("Event Trigerred");
     var tag = $(this);
@@ -279,11 +278,9 @@ $('body').on('click', ".dropdown-item:button", function () {
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
 
-    // show the schedule section
-    $("schedule-display").show();
-
 });
 // --------------------------------------------------------------------------------------
+// end of event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
@@ -335,6 +332,9 @@ function getSchedule(league, teamName) {
 
         // bulid schedule table based on json returned
         buildGameSchedule(response);
+        
+        // show the schedule section
+        $("schedule-display").show();
 
     });   
 
@@ -390,16 +390,17 @@ function buildGameSchedule(apiResponse) {
     };
 
     // clear the table before reloading it with a new schedule.
-    $("#dropdown-list").empty();
+    $("#sched-table tbody").empty();
 
     // iterate over games and build a row for each game
     for (i=0; i < games.length; i++) {
 
-        // Create the new row of games to display
+        // Create the new row of games to display and make it clickable
         newRow = $("<tr class='clickable-row'>").append(
                 $("<td>").text(games[i].date + "/" + games[i].time),
                 $("<td>").text(games[i].awayTeam.City + " " + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
         );
+
         // use the game-row class to define the click event listener to trigger the other API call.
         newRow.addClass("game-row");  
         newRow.attr("date", games[i].date);
@@ -407,10 +408,6 @@ function buildGameSchedule(apiResponse) {
 
         // Append the new row to the table
         $("#sched-table > tbody").append(newRow);
-
-        // log it for testing until there is a table to append to
-        // console.log("On: " + games[i].date + " Time: " + games[i].time + " " + games[i].awayTeam.City + " " 
-        //             + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name);
 
     };
 
@@ -446,24 +443,30 @@ function setBackgroundColor(team, array) {
 // --------------------------------------------------------------------------------------
 //  Ajax call to API - TicketMaster
 //  Parameter values:
-//  date - 
-//  location -
+//  date - the date of the selected game
+//  location - the home team location/city as defined in MySportsFeeds
 // --------------------------------------------------------------------------------------
 function getEvent(date, location) {
-    //  var startDate = moment(date).add(-3, 'days').format().substring(0,19);
-    var startDate = moment('02/15/2020').add(-3, 'days').format().substring(0,19);
-    // console.log(startDate);
-    var endDate = moment(startDate).add(7, 'days').format().substring(0,19);
-    // console.log(endDate);
-    // 
-    var loc = 'Philadelphia'
-    var state = 'PA'
+
+    //  local variable to hold the start date for the search call (made it the day after the game)
+    var startDate = moment(date).add(1, 'days').format().substring(0,19);
+
+    // local variable to hold the end date for the search call (made it 3 days after)
+    var endDate = moment(date).add(3, 'days').format().substring(0,19);
+
+    // testing url 
+    // url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + loc + "&stateCode=" + state + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,asc",
+    
     $.ajax({
-        url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + loc + "&stateCode=" + state + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,desc",
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + location + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,asc",
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
+
         buildEventList(response);
+
+        // show the event section
+        $('#event-list-display').show();
+
     });
  };
  // --------------------------------------------------------------------------------------
@@ -474,32 +477,39 @@ function getEvent(date, location) {
 //  function to populate the event list display section upon successful return from the API
 // --------------------------------------------------------------------------------------
 function buildEventList(apiResponse) {
-    // local variable to hold the array of games
+
+    // clear the events table before reloading 
+    $("#event-table tbody").empty();
+
+    // local variable to hold the array of events
     let events = [];
-    // session variable for the table row tag
+
+    // local variable for the table row tag
     var newRow;
+
+    // iterate over the returned list of events and create an array to get more specifics from.
     for (i=0; i < apiResponse._embedded.events.length; i++) {
         events.push(apiResponse._embedded.events[i]);
     };
+
+    // local variable to format the Date and Time
     var displayDateTime;
+
     // iterate over events and build a row for each event
     for (i=0; i < events.length; i++) {
+
         // Create the new row of games to display
         displayDateTime = events[i].dates.start.dateTime.substring(0,10);
         displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
-        // console.log(displayDateTime);
+        
         newRow = $("<tr>").append(
                 $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
                 $("<td>").text(events[i].name),
         );
-        // use the event-row class to define the click event listener to trigger the other API call.
-        newRow.addClass("event-row");  
         
         // Append the new row to the table
         $("#event-table > tbody").append(newRow);
-        // log it for testing until there is a table to append to
-        // console.log(events[i].dates.start.dateTime + "/" + events[i].dates.start.localTime);
-        // console.log(events[i].name);
+
     };
     
 };
@@ -508,25 +518,26 @@ function buildEventList(apiResponse) {
 // -------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
-// event listener that gets triggerred on click of a game
+// event listener that gets triggerred on click of a game row 
 // --------------------------------------------------------------------------------------
-$('body').on('click', ".clickable-row", function () {  // tried sched-display, sched-table
-    
-    console.log("Event Trigerred to get Events");
+$('body').on('click', ".clickable-row", function () { 
 
-    console.log(this);
+    // local variable to hold the clicked row details
     var tag = $(this);
+
+    // local variable to get the date from the row
     var gameDate = tag.attr("date");
-    console.log(gameDate); 
 
+    // local variable to get the location from the row
+    var locale = tag.attr("location");
+ 
+    // update the display with the location selected
+    $("#location-display").text(locale);
 
-
-    // call the API 
-    getEvent();
-
-    // show the event section
-    $('#event-list-display').show();
+    // call the TicketMaster API to get the events
+    getEvent(gameDate, locale);
 
 });
 // --------------------------------------------------------------------------------------
+// end of event listener that gets triggerred on click of a game 
 // --------------------------------------------------------------------------------------
