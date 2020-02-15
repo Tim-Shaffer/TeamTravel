@@ -142,8 +142,8 @@ $('#sub-button').on('click', function(event) {
     var userName = $('#name').val().trim();
     console.log(userName);
     
-    // add the user to local storage.
-    localStorage.setItem("username", userName);
+    // add the user to session storage.
+    sessionStorage.setItem("username", userName);
 
     // clear the name value
     $("#name").val('');
@@ -167,8 +167,8 @@ $('input:radio').on('click', function() {
     var league = this.value;  // need to make sure that there is a value attribute on the radio buttons ****
     console.log(league); 
 
-    // add the league to local storage
-    localStorage.setItem("league", league);
+    // add the league to session storage
+    sessionStorage.setItem("league", league);
 
     // **** needed the value attributes added to the html
     // **** added function call
@@ -212,7 +212,7 @@ function loadTeamSelectList(league) {
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
             // $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
-            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i].name +'">'+ array[i].name +'</button>');
+            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i].name +'" data-idx="' + i + '">'+ array[i].name +'</button>');
         };  
         
         return true;
@@ -236,11 +236,16 @@ $('body').on('click', ".dropdown-item:button", function () {
     console.log("Event Trigerred");
     var tag = $(this);
     var teamName = tag.val();
+    var index = parseInt(tag.attr("data-idx"));    
 
     console.log("Selected Value: " + teamName);
+    console.log("Index:  " + index);
 
-    // get the league back from local storage **** may look to change to session storage instead
-    var league = localStorage.getItem("league");
+    // add the index to session storage
+    sessionStorage.setItem("index", index);
+
+    // get the league back from session storage 
+    var league = sessionStorage.getItem("league");
 
     // update the Header with the team selected
     $("#teamNameEntry").text(teamName);
@@ -369,7 +374,7 @@ function buildGameSchedule(apiResponse) {
     // local variable to hold the array of games
     let games = [];
 
-    // local variable for the table row tag
+    // session variable for the table row tag
     var newRow;
 
     for (i=0; i < apiResponse.fullgameschedule.gameentry.length; i++) {
@@ -414,12 +419,12 @@ function buildGameSchedule(apiResponse) {
 // --------------------------------------------------------------------------------------
 function setBackgroundColor(team, array) {
 
-    for (i = 0; i < array.length; i++) {
+    // get the index back from session storage to use to pull the colors from the array
+    var idx = sessionStorage.getItem("index");
 
-        if (team === array[i].name) {
-            $('#logo').attr('style', 'background:' + array[i].primColor + ';color:' + array[i].secColor + ';"');
-        }
-    };
+    $('#logo').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $('#schedule-display').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+
 };
 // --------------------------------------------------------------------------------------
 // end of setBackgroundColor() function
