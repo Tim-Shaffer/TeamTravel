@@ -164,7 +164,7 @@ $('#sub-button').on('click', function(event) {
         // update the name into the display
         $("#user-name-disp").text(userName + " ");
         $("#name-event-disp").text(userName + " ");
-        
+
     };
 
 });
@@ -362,14 +362,18 @@ function getSchedule(league, teamName) {
 // --------------------------------------------------------------------------------------
 function getNFLSchedule(apiKey) {
 
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json?type=GET&datatype=json&async=false",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        // console.log(response);
-    });
+    // clear the table before reloading it with a new schedule.
+    $("#sched-table tbody").empty();
+
+    // Create the new row of games to display and make it clickable
+    newRow = $("<tr>").append(
+            $("<td>").text("N/A"),
+            $("<td>").text("Upcoming schedule is currently unavailable. Try a different team!"),
+    );
+
+    // Append the new row to the table
+    $("#sched-table > tbody").append(newRow);
+
 
 };
 // --------------------------------------------------------------------------------------
