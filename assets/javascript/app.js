@@ -402,7 +402,7 @@ function buildGameSchedule(apiResponse) {
 
         // Create the new row of games to display and make it clickable
         newRow = $("<tr class='clickable-row'>").append(
-                $("<td>").text(games[i].date + "/" + games[i].time),
+                $("<td>").text(moment(games[i].date).format('MMM Do YYYY') + " - " + games[i].time),
                 $("<td>").text(games[i].awayTeam.City + " " + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
         );
 
@@ -512,7 +512,7 @@ function buildEventList(apiResponse) {
             displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
             
             newRow = $("<tr>").append(
-                    $("<td>").text(displayDateTime + "/" + events[i].dates.start.localTime),
+                    $("<td>").text(displayDateTime + " - " + events[i].dates.start.localTime),
                     $("<td>").text(events[i].name),
             );
 
