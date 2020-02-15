@@ -34,7 +34,7 @@ let PcolsNHL = ["#F47A38", "#8C2633", "#FFB81C", "#002654", "#C8102E", "#CC0000"
     "#00205B", "#00205B", "#B4975A", "041E42", "#041E42"
 ];
 
-let ScolsNHL = ["#B9975B", "#E2D6B5", "#000000", "#FCB514", "#F1BE48", "#000000", "#000000", "#236192", "#CE1126",
+let ScolsNHL = ["#C1C6C8", "#E2D6B5", "#000000", "#FCB514", "#F1BE48", "#000000", "#000000", "#236192", "#CE1126",
     "#8F8F8C", "#FFFFFF", "#FF4C00", "#C8102E", "#A2AAAD", "#A6192E", "#192168", "#041E42", "#000000",
     "#F47D30", "#CE1126", "#C2912C", "#000000", "#000000", "#EA7200", "#FCB514", "#FFFFFF",
     "#FFFFFF", "#00843D", "#333F42", "#C8102E", "#004C97"
@@ -441,3 +441,10 @@ function setBackgroundColorNHL(team) {
 };
 
 };
+$('.radio').on('click', function (event) {
+
+    $("#dropdownMenuButton").css("display","inline-block");
+    $(".team-selection").css("display", "inline-block");
+    $("#enterName").css("display", "inline-block");
+
+});
