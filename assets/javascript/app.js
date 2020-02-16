@@ -1,85 +1,135 @@
-// Global variables for league arrays of teams
+// Global variables for league arrays of teams 
+//  Team objects contain the Team Name, the primary color, and the secondary color.  Colors are used for styling
 // alphabetical array of MLB Teams
-
-
-
-let PcolsNBA = ["#26282A","#000000","#000000","#1D1160","#000000","#6F263D","#00538C","#0E2240","#1D42BA","#1D428A",
-"#000000","#002D62","#C8102E","#552583","#12173F","#98002E",
-"#00471B","#0C2340","#0C2340","#006BB6","#002D62","#0077C0",
-"#006BB6","#1D1160","#000000","#5A2D81","#000000","#000000",
-"#002B5C","#002B5C"
-]; 
-
-let ScolsNBA = ["#E03A3E","#007A33","#FFFFFF","#00788C","#CE1141","#FFB81C","#B8C4CA","#FEC524","#C8102E","#FFC72C",
-"#CE1141","#FDBB30","#BEC0C2","#FDB927","#5D76A9","#F9A01B",
-"#EEE1C6","#9EA2A2","#C8102E","#F58426","#EF3B24","#C4CED4","#ED174C","#E56020","#E03A3E","#63727A","#C4CED4","#CE1141","#F9A01B","#E31837"];
-
-let PcolsMLB = ["#E3D4AD", "#CE1141", "#FC4C02", "#BD3039", "#0E3386", "#C4CED4", "#C6011F", "#0C2340",
-    "#33006F", "#0C2340", "#EB6E1F", "#004687", "#BA0021", "#005A9C", "#00A3E0", "#0A2351", "#002B5C",
-    "#002D72", "#003087", "#003831", "#E81828", "#FDB827", "#2F241D", "#FD5A1E", "#0C2C56", "#C41E3A",
-    "#092C5C", "#003278", "#134A8E", "#AB0003"
-]; 
-
-let ScolsMLB = ["#A71930", "#13274F", "#27251F", "#0C2340", "#CC3433", "#27251F", "#000000", "#E31937",
-    "#C4CED4", "#FA4616", "#002D62", "#BD9B60", "#003263", "#A5ACAF", "#EF3340", "#B6922E", "#D31145",
-    "#FF5910", "#E4002C", "#EFB21E", "#002D72", "#27251F", "#FFC425", "#27251F", "#005C5C", "#0C2340",
-    "#8FBCE6", "#C0111F", "#1D2D5C", "#14225A"
-]; 
-
-
-
-let PcolsNHL = ["#F47A38", "#8C2633", "#FFB81C", "#002654", "#C8102E", "#CC0000", "#CF0A2C", "#6F263D", "#002654",
-    "#006847", "#CE1126", "#041E42", "#041E42", "#111111", "#154734", "#AF1E2D", "#FFB81C", "#CE1126",
-    "#00539B", "#0038A8", "#C52032", "#F74902", "#FCB514", "#006D75", "#002F87", "#002868",
-    "#00205B", "#00205B", "#B4975A", "041E42", "#041E42"
-];
-
-let ScolsNHL = ["#B9975B", "#E2D6B5", "#000000", "#FCB514", "#F1BE48", "#000000", "#000000", "#236192", "#CE1126",
-    "#8F8F8C", "#FFFFFF", "#FF4C00", "#C8102E", "#A2AAAD", "#A6192E", "#192168", "#041E42", "#000000",
-    "#F47D30", "#CE1126", "#C2912C", "#000000", "#000000", "#EA7200", "#FCB514", "#FFFFFF",
-    "#FFFFFF", "#00843D", "#333F42", "#C8102E", "#004C97"
-]; 
-
-
-let PcolsNFL = ["#A71930", "#97233F", "#241773", "#00338D", "#0085CA", "#0B162A", "#FB4F14", "#FF3C00", "#003594",
-    "#FB4F14", "#0076B6", "#203731", "#03202F", "#002C5F", "#006778", "#E31837", "#0080C6", "#002244",
-    "#008E97", "#4F2683", "#002244", "#D3BC8D", "#0B2265", "#125740", "#A5ACAF", "#004C54", "#FFB612", "#AA0000",
-    "#002244", "#D50A0A", "#0C2340", "#773141"
-];
-
-let ScolsNFL = ["#000000", "#000000", "#000000", "#C60C30", "#101820", "#C83803", "#000000", "#311D00", "#041E42",
-    "#002244", "#B0B7BC", "#FFB612", "#A71930", "#A2AAAD", "#9F792C", "#FFB81C", "#FFC20E", "#866D4B",
-    "#FC4C02", "#4F2683", "#C60C30", "#101820", "#A71930", "#000000", "#000000", "#004C54", "#101820", "#B3995D",
-    "#69BE28", "#0A0A08", "#4B92DB", "#FFB612"
-]; 
-
-
-
-
-
-
-let mlbArray = ["Arizona Diamondbacks", "Atlanta Braves", "Baltimore Orioles", "Boston Red Sox", "Chicago Cubs", "Chicago White Sox", "Cincinnati Reds", "Cleveland Indians",
-"Colorado Rockies", "Detroit Tigers", "Houston Astros", "Kansas City Royals", "Los Angeles Angels", "Los Angeles Dodgers", "Miami Marlins", "Milwaukee Brewers", "Minnesota Twins",
-"New York Mets", "New York Yankees", "Oakland Athletics", "Philadelphia Phillies", "Pittsburgh Pirates", "San Diego Padres", "San Francisco Giants", "Seattle Mariners", "St. Louis Cardinals",
-"Tampa Bay Rays", "Texas Rangers", "Toronto Blue Jays", "Washington Nationals"];
+let mlbArray = [{name: "Arizona Diamondbacks", primColor: "#E3D4AD", secColor: "#A71930",}, 
+{name: "Atlanta Braves", primColor: "#CE1141", secColor: "#13274F",}, 
+{name: "Baltimore Orioles", primColor: "#FC4C02", secColor: "#27251F",}, 
+{name: "Boston Red Sox", primColor: "#BD3039", secColor: "#0C2340",}, 
+{name: "Chicago Cubs", primColor: "#0E3386", secColor: "#CC3433",}, 
+{name: "Chicago White Sox", primColor: "#C4CED4", secColor: "#27251F",}, 
+{name: "Cincinnati Reds", primColor: "#C6011F", secColor: "#000000",}, 
+{name: "Cleveland Indians", primColor: "#0C2340", secColor: "#E31937",},
+{name: "Colorado Rockies", primColor: "#33006F", secColor: "#C4CED4",}, 
+{name: "Detroit Tigers", primColor: "#0C2340", secColor: "#FA4616",}, 
+{name: "Houston Astros", primColor: "#EB6E1F", secColor: "#002D62", }, 
+{name: "Kansas City Royals", primColor: "#004687", secColor: "#BD9B60",}, 
+{name: "Los Angeles Angels", primColor: "#BA0021", secColor: "#003263",}, 
+{name: "Los Angeles Dodgers", primColor: "#005A9C", secColor: "#A5ACAF",}, 
+{name: "Miami Marlins", primColor: "#00A3E0", secColor: "#EF3340",}, 
+{name: "Milwaukee Brewers", primColor: "#0A2351", secColor: "#B6922E",}, 
+{name: "Minnesota Twins", primColor: "#002B5C", secColor: "#D31145",},
+{name: "New York Mets", primColor: "#002D72", secColor: "#FF5910",}, 
+{name: "New York Yankees", primColor: "#003087", secColor: "#E4002C",}, 
+{name: "Oakland Athletics", primColor: "#003831", secColor: "#EFB21E",}, 
+{name: "Philadelphia Phillies", primColor: "#E81828", secColor: "#002D72",}, 
+{name: "Pittsburgh Pirates", primColor: "#FDB827", secColor: "#27251F",}, 
+{name: "San Diego Padres", primColor: "#2F241D", secColor: "#FFC425",}, 
+{name: "San Francisco Giants", primColor: "#FD5A1E", secColor: "#27251F",}, 
+{name: "Seattle Mariners", primColor: "#0C2C56", secColor: "#005C5C",}, 
+{name: "St. Louis Cardinals", primColor: "#C41E3A", secColor: "#0C2340",},
+{name: "Tampa Bay Rays", primColor: "#092C5C", secColor: "#8FBCE6",}, 
+{name: "Texas Rangers", primColor: "#003278", secColor: "#C0111F",}, 
+{name: "Toronto Blue Jays", primColor: "#134A8E", secColor: "#1D2D5C",}, 
+{name: "Washington Nationals", primColor: "#AB0003", secColor: "#14225A"}];
 
 // alphabetical array of NBA Teams
-let nbaArray = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons",
-"Golden State Warriors", "Houston Rockets", "Indiana Pacers", "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", 
-"New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", 
-"Toronto Raptors", "Utah Jazz", "Washington Wizards"];
+let nbaArray = [{name: "Atlanta Hawks", primColor:"#26282A", secColor: "#E03A3E",}, 
+{name: "Boston Celtics", primColor:"#000000", secColor: "#007A33",}, 
+{name: "Brooklyn Nets", primColor:"#000000", secColor: "#FFFFFF",}, 
+{name: "Charlotte Hornets", primColor:"#1D1160", secColor: "#00788C",}, 
+{name: "Chicago Bulls", primColor:"#000000", secColor: "#CE1141",}, 
+{name: "Cleveland Cavaliers", primColor:"#6F263D", secColor: "#FFB81C",}, 
+{name: "Dallas Mavericks", primColor:"#00538C", secColor: "#B8C4CA",}, 
+{name: "Denver Nuggets", primColor:"#0E2240", secColor: "#FEC524",}, 
+{name: "Detroit Pistons", primColor:"#1D42BA", secColor: "#C8102E",},
+{name: "Golden State Warriors", primColor:"#1D428A", secColor: "#FFC72C",},
+{name: "Houston Rockets", primColor:"#000000", secColor: "#CE1141",}, 
+{name: "Indiana Pacers", primColor:"#002D62", secColor: "#FDBB30",}, 
+{name: "Los Angeles Clippers", primColor:"#C8102E", secColor: "#BEC0C2",}, 
+{name: "Los Angeles Lakers", primColor:"#552583", secColor: "#FDB927",}, 
+{name: "Memphis Grizzlies", primColor:"#12173F", secColor: "#5D76A9",}, 
+{name: "Miami Heat", primColor:"#98002E", secColor: "#F9A01B",}, 
+{name: "Milwaukee Bucks", primColor:"#00471B", secColor: "#EEE1C6",}, 
+{name: "Minnesota Timberwolves", primColor:"#0C2340", secColor: "#9EA2A2",}, 
+{name: "New Orleans Pelicans", primColor:"#0C2340", secColor: "#C8102E",}, 
+{name: "New York Knicks", primColor:"#006BB6", secColor: "#F58426",}, 
+{name: "Oklahoma City Thunder", primColor:"#002D62", secColor: "#EF3B24",}, 
+{name: "Orlando Magic", primColor:"#0077C0", secColor: "#C4CED4",}, 
+{name: "Philadelphia 76ers", primColor:"#006BB6", secColor: "#ED174C",}, 
+{name: "Phoenix Suns", primColor:"#1D1160", secColor: "#E56020",}, 
+{name: "Portland Trail Blazers", primColor:"#000000", secColor: "#E03A3E",}, 
+{name: "Sacramento Kings", primColor:"#5A2D81", secColor: "#63727A",}, 
+{name: "San Antonio Spurs", primColor:"#000000", secColor: "#C4CED4",}, 
+{name: "Toronto Raptors", primColor:"#000000", secColor: "#CE1141",}, 
+{name: "Utah Jazz", primColor:"#002B5C", secColor: "#F9A01B",}, 
+{name: "Washington Wizards", primColor:"#002B5C", secColor: "#E31837"}];
 
 // alphabetical array of NFL Teams
-let nflArray = ["Atlanta Falcons", "Arizona Cardinals", "Baltimore Ravens", "Buffalo Bills", "Carolina Panthers", "Chicago Bears", "Cincinnati Bengals", "Cleveland Browns", "Dallas Cowboys",
-"Denver Broncos", "Detroit Lions", "Green Bay Packers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Kansas City Chiefs", "Los Angeles Chargers", "Los Angeles Rams",
-"Miami Dolphins", "Minnesota Vikings", "New England Patriots", "New Orleans Saints", "NY Giants", "NY Jets", "Oakland Raiders", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49ers",
-"Seattle Seahawks", "Tampa Bay Buccaneers", "Tennessee Titans", "Washington Redskins"];
+let nflArray = [{name: "Atlanta Falcons", primColor: "#A71930", secColor: "#000000",}, 
+{name: "Arizona Cardinals", primColor: "#97233F", secColor: "#000000",}, 
+{name: "Baltimore Ravens", primColor: "#241773", secColor: "#000000",}, 
+{name: "Buffalo Bills", primColor: "#00338D", secColor: "#C60C30",}, 
+{name: "Carolina Panthers", primColor: "#0085CA", secColor: "#101820",}, 
+{name: "Chicago Bears", primColor: "#0B162A", secColor: "#C83803",}, 
+{name: "Cincinnati Bengals", primColor: "#FB4F14", secColor: "#000000",}, 
+{name: "Cleveland Browns", primColor: "#FF3C00", secColor: "#311D00",}, 
+{name: "Dallas Cowboys", primColor: "#003594", secColor: "#041E42",},
+{name: "Denver Broncos", primColor: "#FB4F14", secColor: "#002244",}, 
+{name: "Detroit Lions", primColor: "#0076B6", secColor: "#B0B7BC",}, 
+{name: "Green Bay Packers", primColor: "#203731", secColor: "#FFB612",}, 
+{name: "Houston Texans", primColor: "#03202F", secColor: "#A71930",}, 
+{name: "Indianapolis Colts", primColor: "#002C5F", secColor: "#A2AAAD",}, 
+{name: "Jacksonville Jaguars", primColor: "#006778", secColor: "#9F792C",}, 
+{name: "Kansas City Chiefs", primColor: "#E31837", secColor: "#FFB81C",}, 
+{name: "Los Angeles Chargers", primColor: "#0080C6", secColor: "#FFC20E",}, 
+{name: "Los Angeles Rams", primColor: "#002244", secColor: "#866D4B",},
+{name: "Miami Dolphins", primColor: "#008E97", secColor: "#FC4C02",}, 
+{name: "Minnesota Vikings", primColor: "#4F2683", secColor: "#4F2683",}, 
+{name: "New England Patriots", primColor: "#002244", secColor: "#C60C30",}, 
+{name: "New Orleans Saints", primColor: "#D3BC8D", secColor: "#101820",}, 
+{name: "NY Giants", primColor: "#0B2265", secColor: "#A71930",}, 
+{name: "NY Jets", primColor: "#125740", secColor: "#000000",}, 
+{name: "Oakland Raiders", primColor: "#A5ACAF", secColor: "#000000",}, 
+{name: "Philadelphia Eagles", primColor: "#004C54", secColor: "",}, 
+{name: "Pittsburgh Steelers", primColor: "#FFB612", secColor: "#101820",}, 
+{name: "San Francisco 49ers", primColor: "#AA0000", secColor: "#B3995D",},
+{name: "Seattle Seahawks", primColor: "#002244", secColor: "#A5ACAF",}, 
+{name: "Tampa Bay Buccaneers", primColor: "#D50A0A", secColor: "#0A0A08",}, 
+{name: "Tennessee Titans", primColor: "#0C2340", secColor: "#4B92DB",}, 
+{name: "Washington Redskins", primColor: "#773141", secColor: "#FFB612"}];
 
 // alphabetical array of NHL Teams
-let nhlArray = ["Anaheim Ducks", "Arizona Coyotes", "Boston Bruins", "Buffalo Sabres", "Calgary Flames", "Carolina Hurricanes", "Chicago Blackhawks", "Colorado Avalanche", "Columbus Blue Jackets", 
-"Dallas Stars", "Detroit Red Wings", "Edmonton Oilers", "Florida Panthers",  "Los Angeles Kings", "Minnesota Wild", "Montreal Canadiens", "Nashville Predators", "New Jersey Devils", 
-"New York Islanders", "New York Rangers", "Ottawa Senators", "Philadelphia Flyers", "Pittsburgh Penguins", "San Jose Sharks", "St. Louis Blues", "Tampa Bay Lightning", 
-"Toronto Maple Leafs", "Vancouver Canucks", "Vegas Golden Knights", "Washington Capitals", "Winnipeg Jets"];
+let nhlArray = [{name: "Anaheim Ducks", primColor: "#F47A38", secColor: "#C1C6C8"}, 
+{name: "Arizona Coyotes", primColor: "#8C2633", secColor: "#E2D6B5"}, 
+{name: "Boston Bruins", primColor: "#FFB81C", secColor: "#000000"},  
+{name: "Buffalo Sabres", primColor: "#002654", secColor: "#FCB514"}, 
+{name: "Calgary Flames", primColor: "#C8102E", secColor: "#F1BE48"},  
+{name: "Carolina Hurricanes", primColor: "#CC0000", secColor: "#000000"}, 
+{name: "Chicago Blackhawks", primColor: "#CF0A2C", secColor: "#000000"},  
+{name: "Colorado Avalanche", primColor: "#6F263D", secColor: "#236192"},  
+{name: "Columbus Blue Jackets", primColor: "#002654", secColor: "#CE1126"},  
+{name: "Dallas Stars", primColor: "#006847", secColor: "#8F8F8C"}, 
+{name: "Detroit Red Wings", primColor: "#CE1126", secColor: "#FFFFFF"},  
+{name: "Edmonton Oilers", primColor: "#041E42", secColor: "#FF4C00"}, 
+{name: "Florida Panthers", primColor: "#041E42", secColor: "#C8102E"},  
+{name: "Los Angeles Kings", primColor: "#111111", secColor: "#A2AAAD"}, 
+{name: "Minnesota Wild", primColor: "#154734", secColor: "#A6192E"}, 
+{name: "Montreal Canadiens", primColor: "#AF1E2D", secColor: "#192168"}, 
+{name: "Nashville Predators", primColor: "#FFB81C", secColor: "#041E42"},  
+{name: "New Jersey Devils", primColor: "#CE1126", secColor: "#000000"}, 
+{name: "New York Islanders", primColor: "#00539B", secColor: "#F47D30"}, 
+{name: "New York Rangers", primColor:  "#0038A8", secColor: "#CE1126"}, 
+{name: "Ottawa Senators", primColor: "#C52032", secColor: "#C2912C"}, 
+{name: "Philadelphia Flyers", primColor: "#F74902", secColor: "#000000"}, 
+{name: "Pittsburgh Penguins", primColor: "#FCB514", secColor: "#000000"}, 
+{name: "San Jose Sharks", primColor: "#006D75", secColor: "#EA7200"}, 
+{name: "St. Louis Blues", primColor: "#002F87", secColor: "#FCB514"}, 
+{name: "Tampa Bay Lightning", primColor: "#002868", secColor: "#FFFFFF"}, 
+{name: "Toronto Maple Leafs", primColor: "#00205B", secColor: "#FFFFFF"}, 
+{name: "Vancouver Canucks", primColor: "#00205B", secColor: "#00843D"}, 
+{name: "Vegas Golden Knights", primColor: "#B4975A", secColor: "#333F42"}, 
+{name: "Washington Capitals", primColor: "#041E42", secColor: "#C8102E"}, 
+{name: "Winnipeg Jets", primColor: "#041E42", secColor: "#004C97"}];
 
 // --------------------------------------------------------------------------------------
 // event listener for submit button to get user name.
@@ -90,14 +140,32 @@ $('#sub-button').on('click', function(event) {
     
     // get the user from the input and store it in a variable.
     var userName = $('#name').val().trim();
-    console.log(userName);
-    
-    // add the user to local storage.
-    localStorage.setItem("username", userName);
+    // console.log(userName);
 
-    // **** change submit button id
-    // **** Add to remove entry after the button clicked 
+    // capitalize the user entry
+    if (userName) {
+        userName  = capital_letter(userName );
+    };
+    
+    // add the user to session storage.
+    sessionStorage.setItem("username", userName);
+
+    // clear the name value
     $("#name").val('');
+
+    // make sure a team and user were entered before clearing the modal
+    var league = sessionStorage.getItem("league");
+    if (userName && league) {
+        $('#selectLeagueAndTeam').modal('hide');
+
+        // show the schedule display section
+        $("#schedule-display").show();
+
+        // update the name into the display
+        $("#user-name-disp").text(userName + " ");
+        $("#name-event-disp").text(userName + " ");
+
+    };
 
 });
 // --------------------------------------------------------------------------------------
@@ -113,16 +181,19 @@ $('input:radio').on('click', function() {
     
     // gather the name of the league from the value attribute of the button
     var league = this.value;  // need to make sure that there is a value attribute on the radio buttons ****
-    console.log(league); 
+    // console.log(league); 
 
+    // add the league to session storage
+    sessionStorage.setItem("league", league);
 
-    // add the league to local storage
-    localStorage.setItem("league", league);
-
-    // **** needed the value attributes added to the html
-    // **** added function call
+    // function call to load the list of teams
     loadTeamSelectList(league);
     
+
+    // format the modal 
+    $("#dropdownMenuButton").show().css("inline-block");
+    $(".team-selection").show().css("inline-block");
+    $("#enterName").show().css("inline-block");
 
 });
 // --------------------------------------------------------------------------------------
@@ -163,7 +234,8 @@ function loadTeamSelectList(league) {
         
         // loop through the array and build the new list
         for (i=0; i < array.length; i++) {
-            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
+            // $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i]+'">'+ array[i] +'</button>');
+            $("#dropdown-list").append('<button class="dropdown-item" type="button" value="'+ array[i].name +'" data-idx="' + i + '">'+ array[i].name +'</button>');
         };  
         
         return true;
@@ -182,33 +254,48 @@ function loadTeamSelectList(league) {
 // --------------------------------------------------------------------------------------
 // event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
-
 $('body').on('click', ".dropdown-item:button", function () {
-    console.log("Event Trigerred");
+    // console.log("Event Trigerred");
     var tag = $(this);
     var teamName = tag.val();
+    var index = parseInt(tag.attr("data-idx"));    
 
-    console.log("Selected Value: " + teamName);
-    setBackgroundColorNBA(teamName);
-    setBackgroundColorNFL(teamName);
-    setBackgroundColorNHL(teamName);
-    setBackgroundColorMLB(teamName);
+    // console.log("Selected Value: " + teamName);
+    // console.log("Index:  " + index);
 
+    // add the index to session storage
+    sessionStorage.setItem("index", index);
 
-
-
-    // get the league back from local storage **** may look to change to session storage instead
-    var league = localStorage.getItem("league");
+    // get the league back from session storage 
+    var league = sessionStorage.getItem("league");
 
     // update the Header with the team selected
     $("#teamNameEntry").text(teamName);
 
+    // update team name in schedule table
+    $("#team-display").text(teamName);
+
+    // coordinate the colors for the selected team
+    if (league.toUpperCase() === "MLB") {
+        // setBackgroundColorMLB(teamName);
+        setBackgroundColor(teamName, mlbArray);
+    } else if (league.toUpperCase() === "NBA") {
+        // setBackgroundColorNBA(teamName);
+        setBackgroundColor(teamName, nbaArray);
+    } else if (league.toUpperCase() === "NFL") {
+        // setBackgroundColorNFL(teamName);
+        setBackgroundColor(teamName, nflArray);
+    } else if (league.toUpperCase() === "NHL") {
+        // setBackgroundColorNHL(teamName);
+        setBackgroundColor(teamName, nhlArray);
+    }; 
 
     // call the API 
     getSchedule(league.toUpperCase(), teamName);
 
 });
 // --------------------------------------------------------------------------------------
+// end of event listener that gets triggerred on click of the team name
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
@@ -218,87 +305,57 @@ $('body').on('click', ".dropdown-item:button", function () {
 //  teamName - the value from the user selection of the dropdown list
 // --------------------------------------------------------------------------------------
 function getSchedule(league, teamName) {
-    console.log("Ready to make the API call to get the selected schedule");
+    // console.log("Ready to make the API call to get the selected schedule");
     // set the API key for the app
     var apiKey = "Basic MjNjYjY0NGItNDRkOC00NDkwLTg2YmItMDM5ZmIxOlVQZW5uXzIwX0IwMHRjQG1w"
 
+    var team = teamName.replace(" ", "-").toLowerCase();
+    var limit = 10;
+    var queryURL;
+
+    var today = moment();
+    var tomorrow = today.add(1, 'days');
+    var fromDate =  "since-" + moment(tomorrow).format("YYYYMMDD");
+    // console.log(fromDate);
+
     // make the API call for each league
     if (league === "MLB" ) {
-        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies";
-        
-        getMLBSchedule(apiKey);
+
+        queryURL = "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=" + fromDate + "&team=" + team + "&limit=" + limit;
 
     } else if (league === "NBA") {
-        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-76ers";
-
-        getNBASchedule(apiKey);
+        
+        queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=" + fromDate + "&team=" + team + "&limit=" + limit;
 
     } else if (league === "NFL") {
-        // var queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
-        
-        // getNFLSchedule(apiKey);
+        // queryURL = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2020-playoff/full_game_schedule.json?&datatype=json&async=false";
+           getNFLSchedule(apiKey);
 
     } else if (league === "NHL") {
-        // var queryURL = '"https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers"';
         
-        getNHLSchedule(apiKey);
+        queryURL= "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=" + fromDate + "&team=" + team + "&limit=" + limit;
+    
     };
 
-    // $.ajax ({
-    //     url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
-    //     // url: queryURL,
-    //     headers: {
-    //         "Authorization": apiKey
-    //     },
-    // }).then(function(response) {
-    //     console.log(response);
-    // });
+    $.ajax ({
+        url: queryURL,
+        headers: {
+            "Authorization": apiKey
+        },
+    }).then(function(response) {
+        // console.log(response);
+
+        // bulid schedule table based on json returned
+        buildGameSchedule(response);
+        
+        // show the schedule section
+        $("schedule-display").show();
+
+    });   
 
 };
 // --------------------------------------------------------------------------------------
 //  end of getSchedule() function
-// --------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------
-//  function to return the MLB Schedule
-//  Parameter values:
-//  apiKey - the Base64 encoded Authorization key for this feed 
-// --------------------------------------------------------------------------------------
-function getMLBSchedule(apiKey){ 
-
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/mlb/2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-phillies",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        console.log(response);
-    });
-
-};
-// --------------------------------------------------------------------------------------
-// end of getMLBSchedule() function
-// --------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------
-//  function to return the NBA Schedule
-//  Parameter values:
-//  apiKey - the Base64 encoded Authorization key for this feed 
-// --------------------------------------------------------------------------------------
-function getNBASchedule(apiKey) {
-
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/nba/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-76ers",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        console.log(response);
-    });
-
-};
-// --------------------------------------------------------------------------------------
-// end of getNBASchedule() function
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
@@ -308,14 +365,18 @@ function getNBASchedule(apiKey) {
 // --------------------------------------------------------------------------------------
 function getNFLSchedule(apiKey) {
 
-    $.ajax ({
-        url: "https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json?type=GET&datatype=json&async=false",
-        headers: {
-            "Authorization": apiKey
-        },
-    }).then(function(response) {
-        console.log(response);
-    });
+    // clear the table before reloading it with a new schedule.
+    $("#sched-table tbody").empty();
+
+    // Create the new row of games to display and make it clickable
+    newRow = $("<tr>").append(
+            $("<td>").text("N/A"),
+            $("<td>").text("Upcoming schedule is currently unavailable. Try a different team!"),
+    );
+
+    // Append the new row to the table
+    $("#sched-table > tbody").append(newRow);
+
 
 };
 // --------------------------------------------------------------------------------------
@@ -323,88 +384,208 @@ function getNFLSchedule(apiKey) {
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
-//  function to return the NHL Schedule
-//  Parameter values:
-//  apiKey - the Base64 encoded Authorization key for this feed 
-// --------------------------------------------------------------------------------------
-function getNHLSchedule(apiKey) {
-
-    $.ajax ({
-            url: "https://api.mysportsfeeds.com/v1.2/pull/nhl/2019-2020-regular/full_game_schedule.json?type=GET&datatype=json&async=false&date=since-yesterday&team=philadelphia-flyers",
-            // url: queryURL,
-            headers: {
-                "Authorization": apiKey
-            },
-        }).then(function(response) {
-            console.log(response);
-        });
-
-};
-// --------------------------------------------------------------------------------------
-// end of getNHLSchedule() function
-// --------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------
 // Show modal when the page is ready. 
 // --------------------------------------------------------------------------------------
 $(document).ready(function () {
-    $("#selectLeagureAndTeam").modal("show");
-});  
-//
-
+    $("#selectLeagueAndTeam").modal("show");
+}); 
+// --------------------------------------------------------------------------------------
 //  end of document ready action
-// 
-//--------------------------------------------------------------------------------------
-function setBackgroundColorNBA(team) {
+// --------------------------------------------------------------------------------------
 
-    for (j = 0; j < nbaArray.length; j++) {
+// --------------------------------------------------------------------------------------
+//  function to populate the schedule display section upon successful return from the API
+// --------------------------------------------------------------------------------------
+function buildGameSchedule(apiResponse) {
 
-        var primaryColorNBA = PcolsNBA[j];
-        var secondaryColorNBA = ScolsNBA[j];
+    // local variable to hold the array of games
+    let games = [];
 
-        if (team === nbaArray[j]) {
-            $('#logo').attr('style', 'background:' + primaryColorNBA + ';color:' + secondaryColorNBA + ';"');
-        }
+    // session variable for the table row tag
+    var newRow;
+
+    for (i=0; i < apiResponse.fullgameschedule.gameentry.length; i++) {
+        games.push(apiResponse.fullgameschedule.gameentry[i]);
     };
-};
 
-function setBackgroundColorMLB(team) {
+    // clear the table before reloading it with a new schedule.
+    $("#sched-table tbody").empty();
 
-    for (j = 0; j < mlbArray.length; j++) {
+    // iterate over games and build a row for each game
+    for (i=0; i < games.length; i++) {
 
-        var primaryColorMLB = PcolsMLB[j];
-        var secondaryColorMLB = ScolsMLB[j];
+        // Create the new row of games to display and make it clickable
+        newRow = $("<tr class='clickable-row'>").append(
+                $("<td>").text(moment(games[i].date).format('MMM Do YYYY') + " - " + games[i].time),
+                $("<td>").text(games[i].awayTeam.City + " " + games[i].awayTeam.Name + " @ " + games[i].homeTeam.City + " " + games[i].homeTeam.Name),
+        );
 
-        if (team === mlbArray[j]) {
-            $('#logo').attr('style', 'background:' + primaryColorMLB + ';color:' + secondaryColorMLB + ';"');
-        }
+        // use the game-row class to define the click event listener to trigger the other API call.
+        newRow.addClass("game-row");  
+        newRow.attr("date", games[i].date);
+        newRow.attr("location", games[i].homeTeam.City);
+
+        // Append the new row to the table
+        $("#sched-table > tbody").append(newRow);
+
     };
+
 };
+// --------------------------------------------------------------------------------------
+// end of buildGameSchedule() function
+// --------------------------------------------------------------------------------------
 
-function setBackgroundColorNFL(team) {
+// --------------------------------------------------------------------------------------
+// function for coloring of sections based on a specific team and league array 
+//  Parameter values:
+//  team - the name of the team selected
+//  array - the array for the specific league the team is in  
+// --------------------------------------------------------------------------------------
+function setBackgroundColor(team, array) {
 
-    for (j = 0; j < nflArray.length; j++) {
+    // get the index back from session storage to use to pull the colors from the array
+    var idx = sessionStorage.getItem("index");
 
-        var primaryColorNFL = PcolsNFL[j];
-        var secondaryColorNFL = ScolsNFL[j];
+    $('#logo').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    // $('#schedule-display').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $("#modalHeading").attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
 
-        if (team === nflArray[j]) {
-            $('#logo').attr('style', 'background:' + primaryColorNFL + ';color:' + secondaryColorNFL + ';"');
-        }
+    $('.modal-body').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $('.modal-header').attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+    $("#modal-body").attr('style', 'background:' + array[idx].primColor + ';color:' + array[idx].secColor + ';"');
+
+};
+// --------------------------------------------------------------------------------------
+// end of setBackgroundColor() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+//  Ajax call to API - TicketMaster
+//  Parameter values:
+//  date - the date of the selected game
+//  location - the home team location/city as defined in MySportsFeeds
+// --------------------------------------------------------------------------------------
+function getEvent(date, location) {
+
+    //  local variable to hold the start date for the search call (made it the day before the game)
+    var startDate = moment(date).add(-1, 'days').format().substring(0,19);
+
+    // local variable to hold the end date for the search call (made it 3 days after)
+    var endDate = moment(date).add(3, 'days').format().substring(0,19);
+
+    // testing url 
+    // url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + loc + "&stateCode=" + state + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,asc",
+    
+    $.ajax({
+        url: "https://app.ticketmaster.com/discovery/v2/events.json?apikey=AvrVYvXQfA3uZECk6fVhRrCUOxdJ2rWw&city=" + location + "&startDateTime=" + startDate + "Z&classificationName=-sports&endDateTime=" + endDate + "Z&sort=date,asc",
+        method: "GET"
+    }).then(function(response) {
+
+        console.log(response);
+
+        buildEventList(response);
+
+        // show the event section
+        $('#event-list-display').show();
+
+    });
+ };
+ // --------------------------------------------------------------------------------------
+// end of getEvent() function
+// --------------------------------------------------------------------------------------
+
+ // --------------------------------------------------------------------------------------
+//  function to populate the event list display section upon successful return from the API
+// --------------------------------------------------------------------------------------
+function buildEventList(apiResponse) {
+
+    // clear the events table before reloading 
+    $("#event-table tbody").empty();
+
+    // local variable to hold the array of events
+    let events = [];
+
+    // local variable for the table row tag
+    var newRow;
+
+    // iterate over the returned list of events and create an array to get more specifics from.
+    for (i=0; i < apiResponse._embedded.events.length; i++) {
+        events.push(apiResponse._embedded.events[i]);
     };
-};
 
-function setBackgroundColorNHL(team) {
+    // local variable to format the Date and Time
+    var displayDateTime;
 
-    for (j = 0; j < nhlArray.length; j++) {
+    // iterate over events and build a row for each event
+    for (i=0; i < events.length; i++) {
 
-        var primaryColorNHL = PcolsNHL[j];
-        var secondaryColorNHL = ScolsNHL[j];
+        if (events[i].dates.start.dateTime) {
 
-        if (team === nhlArray[j]) {
-            $('#logo').attr('style', 'background:' + primaryColorNHL + ';color:' + secondaryColorNHL + ';"');
-        }
+            // Create the new row of games to display
+            displayDateTime = events[i].dates.start.dateTime.substring(0,10);
+            displayDateTime = moment(displayDateTime).format('MMM Do YYYY');
+            
+            newRow = $("<tr>").append(
+                    $("<td>").text(displayDateTime + " - " + events[i].dates.start.localTime),
+                    $("<td>").text(events[i].name),
+            );
+
+        };
+        
+        // Append the new row to the table
+        $("#event-table > tbody").append(newRow);
+
     };
+    
 };
+// --------------------------------------------------------------------------------------
+// end of buildEventList() function
+// -------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------------------
+// event listener that gets triggerred on click of a game row 
+// --------------------------------------------------------------------------------------
+$('body').on('click', ".clickable-row", function () { 
 
+    // local variable to hold the clicked row details
+    var tag = $(this);
+
+    // local variable to get the date from the row
+    var gameDate = tag.attr("date");
+
+    // local variable to get the location from the row
+    var locale = tag.attr("location");
+ 
+    // update the display with the location selected
+    $("#location-display").text(locale + " ");
+
+    // update the display with the date selected
+    $("#date-display").text(gameDate);
+
+    // call the TicketMaster API to get the events
+    getEvent(gameDate, locale);
+
+});
+// --------------------------------------------------------------------------------------
+// end of event listener that gets triggerred on click of a game 
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// function to capitalize the text before saving it.
+// Found this function on W3 schools - https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-50.php
+// --------------------------------------------------------------------------------------
+function capital_letter(str) {
+    // separate the str parameter into pieces based on the 'space' separator
+    str = str.split(" ");
+
+    // traverse the string pieces and convert the first character of each word to Upper Case and then concatenate the rest of the string.
+    for (let i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    // return the capitalize string put back together with the 'space' separator.
+    return str.join(" ");
+};
+// --------------------------------------------------------------------------------------
+// end of the capital_letter() function
+// --------------------------------------------------------------------------------------
