@@ -13,6 +13,7 @@
 
 
     <!-- fontawesome link-->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--  -->
@@ -36,7 +37,7 @@
     <!--  -->
     <link href="https://fonts.googleapis.com/css?family=Rouge+Script&display=swap" rel="stylesheet">
 
-    <!-- Personal Stylesheet --> 
+    <!-- Personal Stylesheet -->
     <link href="assets/css/app.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -44,21 +45,15 @@
 <body class="row-centered column-centered">
 
 
-    <!-- HTML for modal  -->
-
-    <div id="selectLeagureAndTeam" class="modal fade" role="dialog">
-        <div id="changeSize" class="modal-dialog modal-lg" class="changeToModal" style="margin-top:100px; width:250px;" role="content">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header" style="background: gray">
-                    <h4 class="modal-title" id="modalHeader"> Register Here!</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form>
-
-
-                        <div class="card-body col-12" style="background-color: #999999; position: align-self-center;">
+        <!-- HTML for modal  -->
+        <div id="selectLeagueAndTeam" class="modal fade" role="dialog">
+            
+            <div class="modal-dialog modal-lg" style="height: inherit; width: inherit; margin-top:100px;" role="content">
+                
+                <!-- Modal content-->
+                <div class="modal-content">
+                    
+                    <div class="modal-header" style="background: gray">
 
                         <!-- <h4 class="modal-title" id="modalHeader"> Register Here!</h4> -->
                         <h4 class="modal-title" id="modalHeader"></h4>
@@ -101,48 +96,20 @@
     
                                     <div class="col-lg-4">
 
+                                        <div class="d-flex justify-content-center">
+    
+                                        <!-- New HTML for dropdown -->
+                                        <div class="dropdown" id="team-dropdown" style="margin-bottom: 120px;left:-20px;">
+                                            
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Select a Team
+                                            </button>
 
-                            <div class="row">
-                                
-                                <div id="bootstrapClass" class="col-lg-12" 
-
-                                
-
-                                style="text-align: center;">
-                                    <fieldset data-role="controlgroup" data-type="horizontal">
-                                        <legend >Select A League:</legend>
-                                        <div class="radio">
-                                            <label><input id="nfl" type="radio" name="optradio" value="nfl"
-                                                    unchecked>NFL</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input id="nba" type="radio" name="optradio" value="nba"
-                                                    uncheked>NBA</label>
-                                        </div>
-                                        <div class="radio disabled">
-                                            <label><input id="nhl" type="radio" name="optradio" value="nhl"
-                                                    unchecked>NHL</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input id="mlb" type="radio" name="optradio" value="mlb"
-                                                    unchecked>MLB</label>
-                                        </div>
-                                    </fieldset>
-                                </div>
-
-                                <div id="bootstrapClass2" class="col-0">
-                                    <div class="d-flex justify-content-center">
-
-                                    <!-- New HTML for dropdown -->
-
-                                    <div class="dropdown" id="team-dropdown" style="margin-bottom: 120px;left:-30px;">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            Select a Team
-                                        </button>
-                                        <div class="dropdown-menu team-selection" role="menu" aria-labelledby="dropdownMenuButton"
-                                            id="dropdown-list">
+                                            <div class="dropdown-menu team-selection" role="menu" aria-labelledby="dropdownMenuButton" id="dropdown-list">
+    
+                                            </div>
 
                                         </div>
     
@@ -162,37 +129,26 @@
     
                                     </div>
 
-                                </div>
-                            </div>
-                            
-                                <div class="col-lg-4" id="enterName">
-                                   
-                                    <div class="d-flex justify-content-center">
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-12">
+
+                                            <div class="d-flex justify-content-center">
+                                                
+                                                <!-- <button type="submit" class="btn btn-primary" id="sub-button" data-dismiss="modal">Submit</button> -->
+                                                <button type="submit" class="btn btn-primary" id="sub-button">Submit</button>
                                     
-                                    <label class="names" for="Name" style= "margin-top:30px;margin-right:5px">Name: </label>
-                                    <input style="width:140px; position: align-self-center; margin-top:30px;" id="name" type="text"
-                                        class="form-control" name="fullname"><br>
+                                            </div>
 
+                                        </div>
+
+                                    </div>
+    
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-12">
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary" id="sub-button" data-dismiss="modal">Submit</button>
-                                
-                                
-                                </div>
-</div>
-                                </div>
-
-                                </div>
-
-                                         
-                            </div>
-
-
-
-
+                
+                            </div>       
+    
                         </div>
     
                     </form>
