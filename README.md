@@ -2,9 +2,9 @@
 Repository for Group Project 1
 
 # Authors:
-*   Nancy Ta: worked on the Event API processing
-*   Matt Krebs: worked on the User Interface
-*   Tim Shaffer: team Lead.  Worked on the Sports API, the display of both the games and activities, and coordinating the actions between the two processes.  
+*   Nancy Ta: worked on the Event API processing.
+*   Matt Krebs: worked on the layout and styling.
+*   Tim Shaffer: worked on the Game Schedule API processing.
 
 ## Tech Used
 * HTML 
