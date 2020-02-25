@@ -1,7 +1,6 @@
 # Travel with the Team
-Repository for Group Project 1
 
-# Authors:
+## Authors:
 *   Nancy Ta: worked on the Event API processing.
 *   Matt Krebs: worked on the layout and styling.
 *   Tim Shaffer: worked on the Game Schedule API processing.
@@ -15,13 +14,7 @@ Repository for Group Project 1
 * moment.js
 
 ## Default Page - index.html
-* Link directly to the page here:  https://tim-shaffer.github.io/Project-1/
-
-## Instructions
-1. Create an APP that can solve a problem.
-    * Problem:  **A sports fan wanting to travel to a different city to watch a game and wanting to bring his/her significant other along who is not as much of a sports fan.**
-    * Solution: **Travel with the Team** - has the ability to present other event/activity options to the non sports fan to make the case that the trip would be entertaining for all.
-    
+* Link directly to the page here:  https://tim-shaffer.github.io/TeamTravel/
 
 ## Requirements:
 1. Must uses at least two APIs
