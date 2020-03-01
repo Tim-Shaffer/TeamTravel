@@ -27,9 +27,10 @@ header {
   width:100%; 
   height: inherit; 
   background:rgba(#fff);
+ 
 }
 
-header section {
+header section{
   font-size: 120%;
   max-width:100%;
   color:white;
@@ -54,6 +55,7 @@ header section {
   background-size:cover;
   background-position:center center;
   background-attachment:fixed;
+ 
 }
 
 #hero2{
@@ -72,6 +74,7 @@ header section {
 .inner {
   min-height:600px;
   position: relative;
+
 }
 
 .hero .inner {
@@ -123,5 +126,3 @@ opacity: 1;
 #enterName {
   display:none;
 }
-
-
